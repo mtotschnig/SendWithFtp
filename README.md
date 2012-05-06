@@ -12,3 +12,5 @@ SendWithFtp responds to two intents
 
 2) android.intent.action.SENDTO if the URI in the data is of scheme ftp:
   The application provides the FTP uri and SendWithFtp immediately triggers the upload
+
+SendWithFtp is released under the GNU General Public License version 3
