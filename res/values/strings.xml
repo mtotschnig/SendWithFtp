@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+  This file is part of My Expenses.
+  My Expenses is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  My Expenses is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public License
+  along with My Expenses.  If not, see <http://www.gnu.org/licenses/>.
+ -->
+<resources>
+  <string name="app_name">Send with FTP</string>
+  <string name="ftp_uri_malformed">Malformed URI</string>
+  <string name="ftp_success">Upload to %1$s successful</string>
+  <string name="ftp_failure">Failure while uploading to %1$s: %2$s</string>
+  <string name="ftp_socket_exception">Socket exception while uploading to %1$s</string>
+  <string name="ftp_io_exception">IO exception while uploading to %1$s</string>
+  <string name="ftp_login_failure">Login failure while trying to upload to %1$s</string>
+  <string name="ftp_setFileType_failure">Could not set file type to ASCII while trying to upload
+      to %1$s</string>
+  <string name="ftp_changeWorkingDirectory_failure">Could not change working directory while trying
+      to upload to %1$s</string>
+  <string name="ftp_uploading_wait">FTP Transfer to %1$s. Please wait &#8230;</string>
+  <string name="ftp_connection_refused">Connection to %1$s refused</string>
+  <string name="ftp_connection_failure">Connection to %1$s failed</string>
+  <string name="ftp_cancelled">FTP Transfer to %1$s cancelled</string>
+  <string name="button_add">Add</string>
+  <string name="menu_delete">Delete</string>
+  <string name="menu_edit">Edit</string>
+  <string name="no_uris">No URIs defined.</string>
+  <string name="select_ftp_target">Select an FTP target for the upload</string>
+  <string name="manage_ftp_targets">Manage your FTP targets</string>
+  
+</resources>
