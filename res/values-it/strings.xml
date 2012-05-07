@@ -16,7 +16,7 @@
  -->
 <resources>
   <string name="app_name">Send with FTP</string>
-  <string name="ftp_uri_malformed">Sintassi male dell\'URI %1$s</string>
+  <string name="ftp_uri_malformed">Sintassi male dell\'URI</string>
   <string name="ftp_success">Carica su %1$s è riuscita</string>
   <string name="ftp_failure">Carica su %1$s faillita</string>
   <string name="ftp_socket_exception">Socket eccezione durante il caricamento di %1$s</string>
