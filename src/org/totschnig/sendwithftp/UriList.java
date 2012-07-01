@@ -31,7 +31,6 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 
 public class UriList extends ListActivity {
   private static final int DELETE_COMMAND_ID = 1;
-  private static final int EDIT_COMMAND_ID = 2;
   private static final int ACTIVITY_TRANSFER = 0;
   private UriDataSource datasource;
   private Cursor mUriCursor;
@@ -40,6 +39,7 @@ public class UriList extends ListActivity {
   private String uriPrefix = "ftp://";
   private String action;
   private Uri source;
+  private Long mEditedRow = null;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -75,15 +75,26 @@ public class UriList extends ListActivity {
     mAddButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        createUri(mUriText.getText().toString());
+        createOrUpdateUri(mUriText.getText().toString());
       }
     });
     registerForContextMenu(getListView());
   }
-  protected void createUri(String uri) {
-    if (datasource.createUri(uri) > -1) {
+  protected void createOrUpdateUri(String uri) {
+    boolean success;
+    if (mEditedRow != null) {
+      success = datasource.updateUri(mEditedRow,uri) > 0;
+    } else {
+      success = datasource.createUri(uri) > -1;
+    }
+    if (success) {
       mUriCursor.requery();
-      mUriText.setText(uriPrefix);
+      if (mEditedRow != null) {
+        resetAddButton();
+      } else {
+        mUriText.setText(uriPrefix);
+      }
+      mAddButton.setText(R.string.button_add);
     }
   }
   @Override
@@ -91,18 +102,15 @@ public class UriList extends ListActivity {
       ContextMenuInfo menuInfo) {
     super.onCreateContextMenu(menu, v, menuInfo);
     menu.add(0, DELETE_COMMAND_ID, 0, R.string.menu_delete);
-    menu.add(0, EDIT_COMMAND_ID,0, R.string.menu_edit);
   } 
   @Override
   public boolean onContextItemSelected(MenuItem item) {
     AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
     switch(item.getItemId()) {
     case DELETE_COMMAND_ID:
-      datasource.deleteUri(info.id);
-      mUriCursor.requery();
-      return true;
-    case EDIT_COMMAND_ID:
-      mUriText.setText(mUriCursor.getString(1));
+      if (Long.valueOf(info.id) == mEditedRow) {
+        resetAddButton();
+      }
       datasource.deleteUri(info.id);
       mUriCursor.requery();
       return true;
@@ -118,6 +126,10 @@ public class UriList extends ListActivity {
       i.setData(android.net.Uri.parse(target));
       i.putExtra(Intent.EXTRA_STREAM, source);
       startActivityForResult(i, ACTIVITY_TRANSFER);
+    } else {
+      mUriText.setText(mUriCursor.getString(1));
+      mEditedRow = id;
+      mAddButton.setText(R.string.button_change);
     }
   }
   @Override
@@ -127,10 +139,39 @@ public class UriList extends ListActivity {
     if (requestCode == ACTIVITY_TRANSFER)
       finish();
   }
+  @Override
+  public void onBackPressed() {
+    if (mEditedRow != null) {
+      resetAddButton();   
+    } else {
+      super.onBackPressed();
+    }
+  }
+  private void resetAddButton() {
+    mUriText.setText(uriPrefix);
+    mEditedRow = null;
+    mAddButton.setText(R.string.button_add);
+  }
 
   @Override
   protected void onDestroy() {
     datasource.close();
     super.onPause();
   }
+  @Override
+  protected void onSaveInstanceState(Bundle outState) {
+   super.onSaveInstanceState(outState);
+   if (mEditedRow != null) {
+     outState.putLong("editedRow", mEditedRow);
+   }
+  }
+  @Override
+  protected void onRestoreInstanceState(Bundle savedInstanceState) {
+   super.onRestoreInstanceState(savedInstanceState);
+   mEditedRow = savedInstanceState.getLong("editedRow");
+   if (mEditedRow != null) {
+     mAddButton.setText(R.string.button_change);
+   }
+  }
+
 }

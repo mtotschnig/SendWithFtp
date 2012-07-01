@@ -31,8 +31,8 @@
   <string name="ftp_connection_failure">Verbindung mit %1$s gescheitert</string>
   <string name="ftp_cancelled">FTP Übertragung nach %1$s abgebrochen</string>
   <string name="button_add">Hinzufügen</string>
+  <string name="button_change">Verändern</string>
   <string name="menu_delete">Löschen</string>
-  <string name="menu_edit">Verändern</string>
   <string name="no_uris">Keine URIs vorhanden.</string>
   <string name="select_ftp_target">FTP Ziel für Upload auswählen.</string>
   <string name="manage_ftp_targets">FTP Ziele verwalten</string>

@@ -46,17 +46,23 @@ public class UriDataSource {
   public void close() {
     dbHelper.close();
   }
-
-  public long createUri(String target) {
+  private boolean validateUri(String target) {
     URI uri;
     try {
       uri = new URI(target);
     } catch (URISyntaxException e1) {
       Toast.makeText(context, R.string.ftp_uri_malformed, Toast.LENGTH_SHORT).show();
-      return -1;
+      return false;
     }
     if (!uri.getScheme().equals("ftp")) {
       Toast.makeText(context, "Only FTP URIs are handled, not " + uri.getScheme(), Toast.LENGTH_SHORT).show();
+      return false;
+    }
+    return true;
+  }
+
+  public long createUri(String target) {
+    if (!validateUri(target)) {
       return -1;
     }
     ContentValues values = new ContentValues();
@@ -64,6 +70,18 @@ public class UriDataSource {
     long result = database.insert(SQLiteHelper.TABLE_URI, null,
         values);
     if (result == -1) {
+      Toast.makeText(context, "Error saving URI to database", Toast.LENGTH_SHORT).show();
+    }
+    return result;
+  }
+  public int updateUri(Long rowId, String target) {
+    if (!validateUri(target)) {
+      return -1;
+    }
+    ContentValues values = new ContentValues();
+    values.put(SQLiteHelper.COLUMN_URI, target);
+    int result = database.update(SQLiteHelper.TABLE_URI, values, SQLiteHelper.COLUMN_ID + "=" + rowId, null);
+    if (result == 0) {
       Toast.makeText(context, "Error saving URI to database", Toast.LENGTH_SHORT).show();
     }
     return result;

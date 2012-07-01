@@ -31,8 +31,8 @@
   <string name="ftp_connection_failure">Connection avec %1$s a échoué</string>
   <string name="ftp_cancelled">Téléchargement FTP vers %1$s avorté</string>
   <string name="button_add">Add</string>
+  <string name="button_change">Change</string>
   <string name="menu_delete">Delete</string>
-  <string name="menu_edit">Edit</string>
   <string name="no_uris">No URIs defined.</string>
   <string name="select_ftp_target">Select an FTP target for the upload</string>
   <string name="manage_ftp_targets">Manage your FTP targets</string>

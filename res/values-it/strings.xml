@@ -31,8 +31,8 @@
   <string name="ftp_cancelled">Trasferimento FTP a %1$s cancellato</string>
   <string name="ftp_uploading_wait">Scarica in corso. Attendere prego &#8230;</string>
   <string name="button_add">Add</string>
+  <string name="button_change">Change</string>
   <string name="menu_delete">Delete</string>
-  <string name="menu_edit">Edit</string>
   <string name="no_uris">No URIs defined.</string>
   <string name="select_ftp_target">Select an FTP target for the upload</string>
   <string name="manage_ftp_targets">Manage your FTP targets</string>
