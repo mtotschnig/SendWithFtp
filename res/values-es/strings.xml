@@ -15,7 +15,7 @@
   along with Send With FTP.  If not, see <http://www.gnu.org/licenses/>.
  -->
 <resources>
-  <string name="app_name">Send with FTP</string>
+  <string name="app_name">Enviar con FTP</string>
   <string name="ftp_uri_malformed">URI inválido</string>
   <string name="ftp_success">La carga en %1$s ha sido exitosa.</string>
   <string name="ftp_failure">Error al cargar en %1$s</string>
@@ -31,11 +31,11 @@
   <string name="ftp_connection_refused">Conexión con %1$s negada</string>
   <string name="ftp_connection_failure">Conexión con %1$s ha fallado.</string>
   <string name="ftp_cancelled">Transferencia FTP a %1$s abortada</string>
-  <string name="button_add">Add</string>
-  <string name="button_change">Change</string>
-  <string name="menu_delete">Delete</string>
-  <string name="no_uris">No URIs defined.</string>
-  <string name="select_ftp_target">Select an FTP target for the upload</string>
-  <string name="manage_ftp_targets">Manage your FTP targets</string>
+  <string name="button_add">Añadir</string>
+  <string name="button_change">Cambiar</string>
+  <string name="menu_delete">Borrar</string>
+  <string name="no_urisNo URIs defined">No URI definido.</string>
+  <string name="select_ftp_target">Seleccionar un objetivo de FTP para la carga</string>
+  <string name="manage_ftp_targets">Gestionar sus objetivos FTP</string>
   
 </resources>
