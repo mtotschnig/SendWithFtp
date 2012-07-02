@@ -29,7 +29,7 @@
   <string name="ftp_uploading_wait">Téléchargement FTP vers %1$s en cours. Attendez SVP &#8230;</string>
   <string name="ftp_connection_refused">Connexion avec %1$s refusée</string>
   <string name="ftp_connection_failure">Echec de la connexion avec %1$s</string>
-  <string name="ftp_cancelled">Téléchargement FTP vers %1$s arrêté</string>
+  <string name="ftp_cancelled">Téléchargement FTP vers %1$s annulé</string>
   <string name="button_add">Ajouter</string>
   <string name="button_change">Modifier</string>
   <string name="menu_delete">Effacer</string>
