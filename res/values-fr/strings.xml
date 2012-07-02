@@ -15,26 +15,26 @@
   along with Send With FTP.  If not, see <http://www.gnu.org/licenses/>.
  -->
 <resources>
-  <string name="app_name">Send with FTP</string>
+  <string name="app_name">Envoi par FTP</string>
   <string name="ftp_uri_malformed">Mauvaise syntaxe de l\'URI</string>
-  <string name="ftp_success">Téléchargement vers %1$s a réussi</string>
-  <string name="ftp_failure">Téléchargement vers %1$s a échoué</string>
+  <string name="ftp_success">Téléchargement vers %1$s réussi</string>
+  <string name="ftp_failure">Echec du téléchargement vers %1$s</string>
   <string name="ftp_socket_exception">Socket exception lors du téléchargement vers %1$s</string>
   <string name="ftp_io_exception">IO exception lors du téléchargement vers %1$s</string>
   <string name="ftp_login_failure">Erreur de login lors du téléchargement vers %1$s</string>
-  <string name="ftp_setFileType_failure">Erreur de configuration en type de fichier ASCII lors du
+  <string name="ftp_setFileType_failure">Erreur de configuration du type de fichier ASCII lors du
       téléchargement vers %1$s</string>
   <string name="ftp_changeWorkingDirectory_failure">Erreur de changement de répertoire lors du
       téléchargement vers %1$s</string>
   <string name="ftp_uploading_wait">Téléchargement FTP vers %1$s en cours. Attendez SVP &#8230;</string>
-  <string name="ftp_connection_refused">Connection avec %1$s refusé</string>
-  <string name="ftp_connection_failure">Connection avec %1$s a échoué</string>
-  <string name="ftp_cancelled">Téléchargement FTP vers %1$s avorté</string>
-  <string name="button_add">Add</string>
-  <string name="button_change">Change</string>
-  <string name="menu_delete">Delete</string>
-  <string name="no_uris">No URIs defined.</string>
-  <string name="select_ftp_target">Select an FTP target for the upload</string>
-  <string name="manage_ftp_targets">Manage your FTP targets</string>
+  <string name="ftp_connection_refused">Connexion avec %1$s refusée</string>
+  <string name="ftp_connection_failure">Echec de la connexion avec %1$s</string>
+  <string name="ftp_cancelled">Téléchargement FTP vers %1$s arrêté</string>
+  <string name="button_add">Ajouter</string>
+  <string name="button_change">Modifier</string>
+  <string name="menu_delete">Effacer</string>
+  <string name="no_uris">Aucune URI définie.</string>
+  <string name="select_ftp_target">Choisir une adresse FTP pour le téléchargment</string>
+  <string name="manage_ftp_targets">Gestion de vos adresses FTP</string>
   
 </resources>
