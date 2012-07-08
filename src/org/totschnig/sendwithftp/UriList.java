@@ -14,12 +14,18 @@
 */
 package org.totschnig.sendwithftp;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -27,11 +33,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 
 public class UriList extends ListActivity {
   private static final int DELETE_COMMAND_ID = 1;
+  private static final int HELP_COMMAND_ID = 2;
   private static final int ACTIVITY_TRANSFER = 0;
+  private static final int HELP_DIALOG_ID = 0;
   private UriDataSource datasource;
   private Cursor mUriCursor;
   private Button mAddButton;
@@ -132,6 +141,59 @@ public class UriList extends ListActivity {
       mAddButton.setText(R.string.button_change);
     }
   }
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    super.onCreateOptionsMenu(menu);
+    menu.add(Menu.NONE,HELP_COMMAND_ID,Menu.NONE,R.string.menu_help)
+        .setIcon(android.R.drawable.ic_menu_info_details);
+    return true;
+  }
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+      switch (item.getItemId()) {
+      case HELP_COMMAND_ID:
+        showDialog(HELP_DIALOG_ID);
+        return true;
+      }
+      return super.onOptionsItemSelected(item);
+  }
+  @Override
+  protected Dialog onCreateDialog(int id) {
+    LayoutInflater li;
+    View view;
+    switch (id) {
+    case HELP_DIALOG_ID:
+      li = LayoutInflater.from(this);
+      view = li.inflate(R.layout.aboutview, null);
+      TextView tv;
+      tv = (TextView)view.findViewById(R.id.help_project_home);
+      tv.setMovementMethod(LinkMovementMethod.getInstance());
+      tv = (TextView)view.findViewById(R.id.help_feedback);
+      tv.setMovementMethod(LinkMovementMethod.getInstance());
+      tv = (TextView)view.findViewById(R.id.help_licence_gpl);
+      tv.setMovementMethod(LinkMovementMethod.getInstance());
+
+      /*      
+      String imId = Settings.Secure.getString(
+          getContentResolver(), 
+          Settings.Secure.DEFAULT_INPUT_METHOD
+       );
+      ((TextView)view.findViewById(R.id.debug)).setText(imId);
+      */
+
+      return new AlertDialog.Builder(this)
+        .setTitle(getResources().getString(R.string.app_name) + " " + getResources().getString(R.string.menu_help))
+        .setIcon(R.drawable.about)
+        .setView(view)
+        .setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+          public void onClick(DialogInterface dialog, int whichButton) {
+            dismissDialog(HELP_DIALOG_ID);
+          }
+        }).create();
+    }
+    return null;
+  }
+
   @Override
   protected void onActivityResult(int requestCode, int resultCode, 
       Intent intent) {

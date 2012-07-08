@@ -33,6 +33,7 @@
   <string name="button_add">Hinzufügen</string>
   <string name="button_change">Verändern</string>
   <string name="menu_delete">Löschen</string>
+  <string name="menu_help">Hilfe</string>
   <string name="no_uris">Keine URIs vorhanden.</string>
   <string name="select_ftp_target">FTP Ziel für Upload auswählen.</string>
   <string name="manage_ftp_targets">FTP Ziele verwalten</string>

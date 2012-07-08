@@ -14,8 +14,11 @@
   You should have received a copy of the GNU General Public License
   along with Send With FTP.  If not, see <http://www.gnu.org/licenses/>.
  -->
+ <!DOCTYPE resources [
+  <!ENTITY app_name "Send With FTP">
+]>
 <resources>
-  <string name="app_name">Send with FTP</string>
+  <string name="app_name">&app_name;</string>
   <string name="ftp_uri_malformed">Malformed URI</string>
   <string name="ftp_success">Upload to %1$s successful</string>
   <string name="ftp_failure">Failure while uploading to %1$s: %2$s</string>
@@ -30,11 +33,34 @@
   <string name="ftp_connection_refused">Connection to %1$s refused</string>
   <string name="ftp_connection_failure">Connection to %1$s failed</string>
   <string name="ftp_cancelled">FTP Transfer to %1$s cancelled</string>
+    <string name="help_feedback">If you find <i>&app_name;</i> useful, 
+    please leave a comment in the <a href="market://details?id=org.totschnig.myexpenses">Market</a>. 
+    If you find a problem, have a suggestion for an improvement, or would like to contribute, please
+    contact <a href="mailto:michael@totschnig.org">Michael Totschnig</a>.</string>
+  <string name="help_heading_feedback"><u>Feedback</u></string>
+  <string name="help_heading_credits"><u>Credits</u></string>
+  <string name="help_heading_license"><u>License</u></string>
+  <string name="help_heading_project_home"><u>Project Home</u></string>
+  <string name="help_intro">&app_name; is an Android App that provides intents for sharing files through FTP.
+\nSendWithFtp responds to two intents:
+\n1) android.intent.action.SEND: The user manages a list of FTP URIs and selects one as the target for the file being shared.
+\n2) android.intent.action.SENDTO if the URI in the data is of scheme ftp: The application provides the FTP uri and SendWithFtp immediately triggers the upload.</string>
+  <string name="credits_text">Help screen design copied from Mathdoku. 
+    \nFrench, italian and spanish localization by Laurent Collombet.
+  </string>
   <string name="button_add">Add</string>
   <string name="button_change">Change</string>
   <string name="menu_delete">Delete</string>
+  <string name="menu_help">Help</string>
   <string name="no_uris">No URIs defined.</string>
   <string name="select_ftp_target">Select an FTP target for the upload</string>
   <string name="manage_ftp_targets">Manage your FTP targets</string>
-  
+  <string name="close">Close</string>
+  <!-- strings below this comment do not need translations -->
+  <string name="help_project_home"><a
+      href="http://myexpenses.totschnig.org/">http://sendwithftp.totschnig.org/</a></string>
+  <string name="help_licence_gpl">http://www.gnu.org/licenses/gpl.html</string>
+  <string name="help_licence_apache">Includes FTP library from http://commons.apache.org/net/ ,
+      licenced under http://www.apache.org/licenses/LICENSE-2.0.txt .</string>
+  <string name="help_enjoy"><u>Enjoy!</u></string>
 </resources>

@@ -33,6 +33,7 @@
   <string name="button_add">Ajouter</string>
   <string name="button_change">Modifier</string>
   <string name="menu_delete">Effacer</string>
+  <string name="menu_help">Aide</string>
   <string name="no_uris">Aucune URI définie.</string>
   <string name="select_ftp_target">Choisir une adresse FTP pour le téléchargment</string>
   <string name="manage_ftp_targets">Gestion de vos adresses FTP</string>
