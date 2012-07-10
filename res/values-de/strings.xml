@@ -14,8 +14,11 @@
   You should have received a copy of the GNU General Public License
   along with Send With FTP.  If not, see <http://www.gnu.org/licenses/>.
  -->
+ <!DOCTYPE resources [
+  <!ENTITY app_name "Mit FTP versenden">
+]>
 <resources>
-  <string name="app_name">Mit FTP versenden</string>
+  <string name="app_name">&app_name;</string>
   <string name="ftp_uri_malformed">Ungültige URI</string>
   <string name="ftp_success">Übertragung nach %1$s erfolgreich</string>
   <string name="ftp_failure">Übertragung nach %1$s gescheitert</string>
@@ -30,6 +33,26 @@
   <string name="ftp_connection_refused">Verbindung mit %1$s verweigert</string>
   <string name="ftp_connection_failure">Verbindung mit %1$s gescheitert</string>
   <string name="ftp_cancelled">FTP Übertragung nach %1$s abgebrochen</string>
+  <string name="help_feedback">Wenn Ihnen <i>&app_name;</i> nützlich ist, geben Sie doch im
+      <a href="market://details?id=org.totschnig.sendwithftp">Market</a> dazu einen Kommentar ab.
+      Wenn Sie auf ein Problem stoßen, einen Verbesserungsvorschlag haben oder einen Beitrag leisten
+       wollen, bitte kontaktieren Sie
+       <a href="mailto:michael@totschnig.org">Michael Totschnig</a>.</string>
+  <string name="help_heading_feedback"><u>Feedback</u></string>
+  <string name="help_heading_credits"><u>Abspann</u></string>
+  <string name="help_heading_license"><u>Lizenz</u></string>
+  <string name="help_heading_project_home"><u>Quell-Code</u></string>
+  <string name="help_intro">&app_name; reagiert auf zwei Intents für das Teilen von Dateien mittels FTP:
+\n1) android.intent.action.SEND: Der Benützer kann seine Liste von FTP URIs verwalten und eine davon als Ziel
+für die Übertragung der zu teilenden Datei auswählen. Dieses Intent wird in Android verwendet, um Dateien aus einer
+App zu exportieren. &app_name; steht dadurch in allen Apps zur Verfügung, die das Teilen von Dateien unterstützen.
+\n2) android.intent.action.SENDTO: falls in der data Eigenschaft des Intents eine FTP URI mitgeschickt wird: 
+&app_name; initiert dann die Dateiübertragung zu diesem Ziel.
+  </string>
+  <string name="credits_text">Design des Hilfe-Dialogs von Mathdoku.
+      \nFranzösische, italienische und spanische Übersetzung von Laurent Collombet.
+  </string>
+  
   <string name="button_add">Hinzufügen</string>
   <string name="button_change">Verändern</string>
   <string name="menu_delete">Löschen</string>

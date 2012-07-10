@@ -14,8 +14,11 @@
   You should have received a copy of the GNU General Public License
   along with Send With FTP.  If not, see <http://www.gnu.org/licenses/>.
  -->
+ <!DOCTYPE resources [
+  <!ENTITY app_name "Envoi par FTP">
+]>
 <resources>
-  <string name="app_name">Envoi par FTP</string>
+  <string name="app_name">&app_name;</string>
   <string name="ftp_uri_malformed">Mauvaise syntaxe de l\'URI</string>
   <string name="ftp_success">Téléchargement vers %1$s réussi</string>
   <string name="ftp_failure">Echec du téléchargement vers %1$s</string>
@@ -30,6 +33,15 @@
   <string name="ftp_connection_refused">Connexion avec %1$s refusée</string>
   <string name="ftp_connection_failure">Echec de la connexion avec %1$s</string>
   <string name="ftp_cancelled">Téléchargement FTP vers %1$s annulé</string>
+  <string name="help_feedback">Si <i>&app_name;</i> vous est utile, laissez un commentaire dans le
+      <a href="market://details?id=org.totschnig.sendwithftp">Market</a>. Si vous rencontrez un
+      problème, si vous avez une suggestion pour une amélioration, ou si vous désirez contribuer,
+      contactez <a href="mailto:michael@totschnig.org">Michael Totschnig</a>.</string>
+  <string name="help_heading_feedback"><u>Feedback</u></string>
+  <string name="help_heading_credits"><u>Générique</u></string>
+  <string name="help_heading_license"><u>License</u></string>
+  <string name="credits_text">Design de la page Aide copié de Mathdoku.
+      \nTraduction française, espagnole et italienne par Laurent Collombet.</string>
   <string name="button_add">Ajouter</string>
   <string name="button_change">Modifier</string>
   <string name="menu_delete">Effacer</string>
