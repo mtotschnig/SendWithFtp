@@ -45,7 +45,7 @@
 \n1) android.intent.action.SEND: The user manages a list of FTP URIs and selects one as the target 
 for the file being shared. This intent is Android\'s generic standard for sharing files, thus 
 &app_name; will be available from any app allowing to share files.
-\n2) android.intent.action.SENDTO: if the URI in the data is of scheme ftp: &app_name; immediately 
+\n2) android.intent.action.SENDTO: if the URI in the data is of scheme ftp, &app_name; immediately 
 triggers the upload to this target.</string>
   <string name="credits_text">Help screen design copied from Mathdoku. 
     \nFrench, italian and spanish localization by Laurent Collombet.
