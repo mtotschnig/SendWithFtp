@@ -48,7 +48,7 @@ public class UriList extends ListActivity {
   private String uriPrefix = "ftp://";
   private String action;
   private Uri source;
-  private Long mEditedRow = null;
+  private Long mEditedRow = 0L;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -91,14 +91,14 @@ public class UriList extends ListActivity {
   }
   protected void createOrUpdateUri(String uri) {
     boolean success;
-    if (mEditedRow != null) {
+    if (mEditedRow != 0L) {
       success = datasource.updateUri(mEditedRow,uri) > 0;
     } else {
       success = datasource.createUri(uri) > -1;
     }
     if (success) {
       mUriCursor.requery();
-      if (mEditedRow != null) {
+      if (mEditedRow != 0L) {
         resetAddButton();
       } else {
         mUriText.setText(uriPrefix);
@@ -203,7 +203,7 @@ public class UriList extends ListActivity {
   }
   @Override
   public void onBackPressed() {
-    if (mEditedRow != null) {
+    if (mEditedRow != 0L) {
       resetAddButton();   
     } else {
       super.onBackPressed();
@@ -211,7 +211,7 @@ public class UriList extends ListActivity {
   }
   private void resetAddButton() {
     mUriText.setText(uriPrefix);
-    mEditedRow = null;
+    mEditedRow = 0L;
     mAddButton.setText(R.string.button_add);
   }
 
@@ -223,15 +223,13 @@ public class UriList extends ListActivity {
   @Override
   protected void onSaveInstanceState(Bundle outState) {
    super.onSaveInstanceState(outState);
-   if (mEditedRow != null) {
-     outState.putLong("editedRow", mEditedRow);
-   }
+   outState.putLong("editedRow", mEditedRow);
   }
   @Override
   protected void onRestoreInstanceState(Bundle savedInstanceState) {
    super.onRestoreInstanceState(savedInstanceState);
    mEditedRow = savedInstanceState.getLong("editedRow");
-   if (mEditedRow != null) {
+   if (mEditedRow != 0L) {
      mAddButton.setText(R.string.button_change);
    }
   }
