@@ -54,8 +54,10 @@ public class UriDataSource {
       Toast.makeText(context, R.string.ftp_uri_malformed, Toast.LENGTH_SHORT).show();
       return false;
     }
-    if (!uri.getScheme().equals("ftp")) {
-      Toast.makeText(context, "Only FTP URIs are handled, not " + uri.getScheme(), Toast.LENGTH_SHORT).show();
+    String scheme = uri.getScheme();
+    if (scheme == null || !scheme.equals("ftp")) {
+      Toast.makeText(context, "Only FTP URIs are handled" + 
+          (scheme == null ? "" : " , not " + scheme), Toast.LENGTH_SHORT).show();
       return false;
     }
     return true;
