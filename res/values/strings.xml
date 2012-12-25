@@ -41,12 +41,15 @@
   <string name="help_heading_credits"><u>Credits</u></string>
   <string name="help_heading_license"><u>License</u></string>
   <string name="help_heading_project_home"><u>Source Code</u></string>
-  <string name="help_intro">&app_name; responds to two intents for sharing files through FTP:
+  <string name="help_intro"><i>&app_name;</i> responds to two intents for sharing files through FTP:
 \n1) android.intent.action.SEND: The user manages a list of FTP URIs and selects one as the target 
 for the file being shared. This intent is Android\'s generic standard for sharing files, thus 
-&app_name; will be available from any app allowing to share files.
-\n2) android.intent.action.SENDTO: if the URI in the data is of scheme ftp, &app_name; immediately 
-triggers the upload to this target.</string>
+<i>&app_name;</i> will be available from any app allowing to share files.
+\n2) android.intent.action.SENDTO: if the URI in the data is of scheme ftp, <i>&app_name;</i> immediately 
+triggers the upload to this target. This mode is used from my app <i>My Expenses</i>.\n
+<i>&app_name;</i> currently does not prompt for username and password. You have to provide them in the URI,
+e.g.: ftp://login:password@my.example.org:port/my/directory/ .
+</string>
   <string name="credits_text">Help screen design copied from Mathdoku. 
     \nFrench, italian and spanish localization by Laurent Collombet.
   </string>

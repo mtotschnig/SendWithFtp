@@ -16,7 +16,10 @@ package org.totschnig.sendwithftp;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringBufferInputStream;
 import java.net.ConnectException;
 import java.net.SocketException;
 import java.net.URI;
@@ -31,9 +34,11 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -49,28 +54,75 @@ public class FtpTransfer extends Activity {
     super.onCreate(savedInstanceState);
     target = getIntent().getData();
     Bundle extras = getIntent().getExtras();
-    File source = new File (((Uri) extras.getParcelable(Intent.EXTRA_STREAM)).getPath());
-    
-    task=(FtpAsyncTask)getLastNonConfigurationInstance();
-    
-    mProgressDialog = ProgressDialog.show(this, "",
-        getString(R.string.ftp_uploading_wait,target.getHost()), true, true, new OnCancelListener() {
-          public void onCancel(DialogInterface dialog) {
-            if (task != null && task.getStatus() != AsyncTask.Status.FINISHED) {
-              task.cancel(true);
-              markAsDone();
+    Uri uri;
+    InputStream is = null;
+    String content;
+    String fileName = null;
+    int fileType = 0;
+    if (extras.containsKey(Intent.EXTRA_STREAM) && (uri = (Uri) extras.getParcelable(Intent.EXTRA_STREAM)) != null) {
+      // Get resource path
+      String fileuri = parseUriTofileName(uri);
+      File source = new File (fileuri);
+      fileName = source.getName();
+      fileType = FTP.BINARY_FILE_TYPE;
+      try {
+        is = new FileInputStream(source);
+      } catch (FileNotFoundException e) {
+        e.printStackTrace();
+      }
+    } else if (extras.containsKey(Intent.EXTRA_TEXT) && (content = extras.getString(Intent.EXTRA_TEXT)) != null) {
+      is = new StringBufferInputStream(content);
+      fileName = extras.getString(Intent.EXTRA_SUBJECT);
+      fileType = FTP.ASCII_FILE_TYPE;
+    }
+    if (is != null) {
+      task=(FtpAsyncTask)getLastNonConfigurationInstance();
+
+      mProgressDialog = ProgressDialog.show(this, "",
+          getString(R.string.ftp_uploading_wait,target.getHost()), true, true, new OnCancelListener() {
+            public void onCancel(DialogInterface dialog) {
+              if (task != null && task.getStatus() != AsyncTask.Status.FINISHED) {
+                task.cancel(true);
+                markAsDone();
+              }
             }
-          }
-    });
-    if (task!=null) {
-      task.attach(this);      
-      if (task.getStatus() == AsyncTask.Status.FINISHED) {
-        markAsDone();
+      });
+      if (task!=null) {
+        task.attach(this);
+        if (task.getStatus() == AsyncTask.Status.FINISHED) {
+          markAsDone();
+        }
+      } else {
+        task = new FtpAsyncTask(this, is, target,fileName,fileType);
+        task.execute();
       }
     } else {
-      task = new FtpAsyncTask(this, source, target);
-      task.execute();
+      Toast.makeText(getBaseContext(), "Cannot handle shared data", Toast.LENGTH_LONG).show();;
+      finish();
     }
+  }
+  public String parseUriTofileName(Uri uri) {
+    String selectedImagePath = null;
+    String filemanagerPath = uri.getPath();
+
+    String[] projection = { MediaStore.Images.Media.DATA };
+    Cursor cursor = managedQuery(uri, projection, null, null, null);
+
+    if (cursor != null) {
+      // Here you will get a null pointer if cursor is null
+      // This can be if you used OI file manager for picking the media
+      int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+      cursor.moveToFirst();
+      selectedImagePath = cursor.getString(column_index);
+    }
+
+    if (selectedImagePath != null) {
+      return selectedImagePath;
+    }
+    else if (filemanagerPath != null) {
+      return filemanagerPath;
+    }
+     return null;
   }
   
   void markAsDone() {
@@ -105,14 +157,18 @@ public class FtpTransfer extends Activity {
   static class FtpAsyncTask extends AsyncTask<Void, Void, Void> {
       private FtpTransfer activity;
       private Uri target;
-      private File file;
+      private String fileName;
+      private InputStream is;
+      private int fileType;
       Result result;
       ProgressDialog mProgressDialog;
       
-      public FtpAsyncTask(FtpTransfer activity,File file,Uri target2) {
+      public FtpAsyncTask(FtpTransfer activity,InputStream is,Uri target2, String fileName,int fileType) {
         attach(activity);
         this.target = target2;
-        this.file = file;
+        this.is = is;
+        this.fileName = fileName;
+        this.fileType = fileType;
       }
       @Override
       protected Void doInBackground(Void... params) {
@@ -123,7 +179,6 @@ public class FtpTransfer extends Activity {
         //String ftpTarget = "ftp://michael:foo@10.0.0.2/";
         //bad directory:
         //String ftpTarget = "ftp://michael:foo@10.0.0.2/foobar/";
-        android.os.Debug.waitForDebugger();
         FTPClient mFTP = new FTPClient();
         String host = target.getHost();
         if (host == null)
@@ -160,7 +215,7 @@ public class FtpTransfer extends Activity {
             if (isCancelled()) {
               return(null);
             }
-            if (!mFTP.setFileType(FTP.ASCII_FILE_TYPE)) {
+            if (!mFTP.setFileType(fileType)) {
               setResult(new Result(false, R.string.ftp_setFileType_failure));
               return(null);
             }
@@ -177,11 +232,8 @@ public class FtpTransfer extends Activity {
             if (isCancelled()) {
               return(null);
             }
-            // Prepare file to be uploaded to FTP Server
-            FileInputStream ifile = new FileInputStream(file);
-            
             // Upload file to FTP Server
-            if (mFTP.storeFile(file.getName(),ifile)) {
+            if (mFTP.storeFile(fileName,is)) {
               setResult(new Result(true, R.string.ftp_success));
             } else {
               setResult(new Result(false, R.string.ftp_failure,mFTP.getReplyString()));
