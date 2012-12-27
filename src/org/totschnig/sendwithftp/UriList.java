@@ -48,6 +48,7 @@ public class UriList extends ListActivity {
   private String uriPrefix = "ftp://";
   private String action;
   private Bundle extras;
+  private String type;
   private Long mEditedRow = 0L;
 
   @Override
@@ -60,6 +61,7 @@ public class UriList extends ListActivity {
     if (Intent.ACTION_SEND.equals(action)) {
       setTitle(R.string.select_ftp_target);
       extras = intent.getExtras();
+      type = intent.getType();
     } else {
       setTitle(R.string.manage_ftp_targets);
     }
@@ -131,7 +133,7 @@ public class UriList extends ListActivity {
       Intent i = new Intent(this, FtpTransfer.class);
       mUriCursor.moveToPosition(position);
       String target = mUriCursor.getString(1);
-      i.setData(android.net.Uri.parse(target));
+      i.setDataAndType(android.net.Uri.parse(target),type);
       i.putExtras(extras);
       startActivityForResult(i, ACTIVITY_TRANSFER);
     } else {

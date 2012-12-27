@@ -48,20 +48,58 @@ public class FtpTransfer extends Activity {
   ProgressDialog mProgressDialog;
   private FtpAsyncTask task=null;
   Uri target;
+  InputStream is;
+  String fileName;
+  int fileType;
   
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    target = getIntent().getData();
-    Bundle extras = getIntent().getExtras();
-    Uri uri;
-    InputStream is = null;
-    String content;
-    String fileName = null;
-    int fileType = 0;
-    if (extras.containsKey(Intent.EXTRA_STREAM) && (uri = (Uri) extras.getParcelable(Intent.EXTRA_STREAM)) != null) {
+    Intent intent = getIntent();
+    target = intent.getData();
+    task=(FtpAsyncTask)getLastNonConfigurationInstance();
+    if (task!=null) {
+      showProgressDialog();
+      task.attach(this);
+      if (task.getStatus() == AsyncTask.Status.FINISHED) {
+        markAsDone();
+      }
+    } else {
+      String type = intent.getType();
+      is = null;
+      fileName = null;
+      fileType = 0;
+      if (type != null) {
+        Log.i("FtpTransfer",type);
+        if ("text/plain".equals(type)) {
+          handleSendText(intent); // Handle text being sent
+        } else if (type.startsWith("image/")) {
+          handleSendImage(intent); // Handle single image being sent
+        }
+      }
+      if (is != null) {
+        showProgressDialog();
+        task = new FtpAsyncTask(this, is, target,fileName,fileType);
+        task.execute();
+      } else {
+        Toast.makeText(getBaseContext(), "Cannot handle shared data", Toast.LENGTH_LONG).show();;
+        finish();
+      }
+    }
+  }
+  private void handleSendText(Intent intent) {
+    String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
+    if (sharedText != null) {
+      is = new StringBufferInputStream(sharedText);
+      fileName = intent.getStringExtra(Intent.EXTRA_SUBJECT);
+      fileType = FTP.ASCII_FILE_TYPE;
+    }
+  }
+  private void handleSendImage(Intent intent) {
+    Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+    if (imageUri != null) {
       // Get resource path
-      String fileuri = parseUriTofileName(uri);
+      String fileuri = parseUriTofileName(imageUri);
       File source = new File (fileuri);
       fileName = source.getName();
       fileType = FTP.BINARY_FILE_TYPE;
@@ -70,36 +108,18 @@ public class FtpTransfer extends Activity {
       } catch (FileNotFoundException e) {
         e.printStackTrace();
       }
-    } else if (extras.containsKey(Intent.EXTRA_TEXT) && (content = extras.getString(Intent.EXTRA_TEXT)) != null) {
-      is = new StringBufferInputStream(content);
-      fileName = extras.getString(Intent.EXTRA_SUBJECT);
-      fileType = FTP.ASCII_FILE_TYPE;
-    }
-    if (is != null) {
-      task=(FtpAsyncTask)getLastNonConfigurationInstance();
-
-      mProgressDialog = ProgressDialog.show(this, "",
-          getString(R.string.ftp_uploading_wait,target.getHost()), true, true, new OnCancelListener() {
-            public void onCancel(DialogInterface dialog) {
-              if (task != null && task.getStatus() != AsyncTask.Status.FINISHED) {
-                task.cancel(true);
-                markAsDone();
-              }
+    } 
+  }
+  private void showProgressDialog() {
+    mProgressDialog = ProgressDialog.show(this, "",
+        getString(R.string.ftp_uploading_wait,target.getHost()), true, true, new OnCancelListener() {
+          public void onCancel(DialogInterface dialog) {
+            if (task != null && task.getStatus() != AsyncTask.Status.FINISHED) {
+              task.cancel(true);
+              markAsDone();
             }
-      });
-      if (task!=null) {
-        task.attach(this);
-        if (task.getStatus() == AsyncTask.Status.FINISHED) {
-          markAsDone();
-        }
-      } else {
-        task = new FtpAsyncTask(this, is, target,fileName,fileType);
-        task.execute();
-      }
-    } else {
-      Toast.makeText(getBaseContext(), "Cannot handle shared data", Toast.LENGTH_LONG).show();;
-      finish();
-    }
+          }
+    });
   }
   public String parseUriTofileName(Uri uri) {
     String selectedImagePath = null;

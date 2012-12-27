@@ -26,7 +26,7 @@
         android:theme="@android:style/Theme.Translucent.NoTitleBar">
       <intent-filter>
         <action android:name="android.intent.action.SENDTO"/>
-        <data android:scheme="ftp"/>
+        <data android:scheme="ftp" android:mimeType="*/*" />
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
       </intent-filter>
