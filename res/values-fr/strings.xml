@@ -33,9 +33,13 @@
   <string name="ftp_connection_refused">Connexion avec %1$s refusée</string>
   <string name="ftp_connection_failure">Echec de la connexion avec %1$s</string>
   <string name="ftp_cancelled">Téléchargement FTP vers %1$s annulé</string>
+  <string name="help_heading_whats_new">Nouveautés</string>
+  <string name="help_whats_new">&#160;- informazioni di utilizzo.\n
+    - la modifica delle voci, mentre la selezione di destinazione.</string>
   <string name="button_add">Ajouter</string>
   <string name="button_change">Modifier</string>
   <string name="menu_delete">Effacer</string>
+  <string name="menu_edit">Éditer</string>
   <string name="menu_help">Aide</string>
   <string name="no_uris">Aucune URI définie.</string>
   <string name="select_ftp_target">Choisir une adresse FTP pour le téléchargment</string>

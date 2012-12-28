@@ -33,10 +33,13 @@
   <string name="ftp_connection_refused">Verbindung mit %1$s verweigert</string>
   <string name="ftp_connection_failure">Verbindung mit %1$s gescheitert</string>
   <string name="ftp_cancelled">FTP Übertragung nach %1$s abgebrochen</string>
-  <string name="help_heading_whats_new">Neue Funktionen</string>  
+  <string name="help_heading_whats_new">Neue Funktionen</string>
+  <string name="help_whats_new">&#160;- Gebrauchshinweis hinzugefügt.\n
+    - Beim Auswählen des Zieles Verändern der Einträge ermöglichen.</string> 
   <string name="button_add">Hinzufügen</string>
   <string name="button_change">Verändern</string>
   <string name="menu_delete">Löschen</string>
+  <string name="menu_edit">Verändern</string>
   <string name="menu_help">Hilfe</string>
   <string name="no_uris">Keine URIs vorhanden.</string>
   <string name="select_ftp_target">FTP Ziel für Upload auswählen.</string>
