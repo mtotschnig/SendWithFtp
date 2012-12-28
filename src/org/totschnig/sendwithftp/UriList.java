@@ -199,7 +199,7 @@ public class UriList extends ListActivity {
             viewWebSite();
           }
         })
-        .setNegativeButton(R.string.close, null).create();
+        .setNegativeButton(android.R.string.ok, null).create();
     }
     return null;
   }

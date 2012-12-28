@@ -34,8 +34,8 @@
   <string name="ftp_connection_failure">Echec de la connexion avec %1$s</string>
   <string name="ftp_cancelled">Téléchargement FTP vers %1$s annulé</string>
   <string name="help_heading_whats_new">Nouveautés</string>
-  <string name="help_whats_new">&#160;- informazioni di utilizzo.\n
-    - la modifica delle voci, mentre la selezione di destinazione.</string>
+  <string name="help_whats_new">&#160;- Ajouté mode d'emploi.\n
+    - Lors de la sélection de la cible, permettre modification de l\'entrée.</string>
   <string name="button_add">Ajouter</string>
   <string name="button_change">Modifier</string>
   <string name="menu_delete">Effacer</string>

@@ -55,7 +55,6 @@
   <string name="no_uris">No URIs defined.</string>
   <string name="select_ftp_target">Select an FTP target for the upload</string>
   <string name="manage_ftp_targets">Manage your FTP targets</string>
-  <string name="close">Close</string>
   <!-- strings below this comment do not need translations -->
   <string name="help_enjoy"><u>Enjoy!</u></string>
   <string name="help_heading_license">License</string>
