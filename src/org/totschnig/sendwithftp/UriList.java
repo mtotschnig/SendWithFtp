@@ -19,10 +19,11 @@ import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -38,9 +39,10 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 
 public class UriList extends ListActivity {
   private static final int DELETE_COMMAND_ID = 1;
-  private static final int HELP_COMMAND_ID = 2;
+  private static final int WEB_COMMAND_ID = 2;
+  private static final int INFO_COMMAND_ID = 3;
+  private static final int INFO_DIALOG_ID = 0;
   private static final int ACTIVITY_TRANSFER = 0;
-  private static final int HELP_DIALOG_ID = 0;
   private UriDataSource datasource;
   private Cursor mUriCursor;
   private Button mAddButton;
@@ -145,34 +147,36 @@ public class UriList extends ListActivity {
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     super.onCreateOptionsMenu(menu);
-    menu.add(Menu.NONE,HELP_COMMAND_ID,Menu.NONE,R.string.menu_help)
+    menu.add(Menu.NONE,INFO_COMMAND_ID,Menu.NONE,"Info")
         .setIcon(android.R.drawable.ic_menu_info_details);
     return true;
   }
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
       switch (item.getItemId()) {
-      case HELP_COMMAND_ID:
-        showDialog(HELP_DIALOG_ID);
+      case INFO_COMMAND_ID:
+        showDialog(INFO_DIALOG_ID);
+        return true;
+      case WEB_COMMAND_ID:
+        viewWebSite();
         return true;
       }
       return super.onOptionsItemSelected(item);
+  }
+  private void viewWebSite() {
+    Intent i = new Intent(Intent.ACTION_VIEW);
+    i.setData(Uri.parse("http://mtotschnig.github.com/SendWithFtp/"));
+    startActivity(i);
   }
   @Override
   protected Dialog onCreateDialog(int id) {
     LayoutInflater li;
     View view;
     switch (id) {
-    case HELP_DIALOG_ID:
+    case INFO_DIALOG_ID:
       li = LayoutInflater.from(this);
       view = li.inflate(R.layout.aboutview, null);
-      TextView tv;
-      tv = (TextView)view.findViewById(R.id.help_project_home);
-      tv.setMovementMethod(LinkMovementMethod.getInstance());
-      tv = (TextView)view.findViewById(R.id.help_feedback);
-      tv.setMovementMethod(LinkMovementMethod.getInstance());
-      tv = (TextView)view.findViewById(R.id.help_licence_gpl);
-      tv.setMovementMethod(LinkMovementMethod.getInstance());
+      ((TextView)view.findViewById(R.id.aboutVersionCode)).setText(getVersionInfo());
 
       /*      
       String imId = Settings.Secure.getString(
@@ -184,16 +188,18 @@ public class UriList extends ListActivity {
 
       return new AlertDialog.Builder(this)
         .setTitle(getResources().getString(R.string.app_name) + " " + getResources().getString(R.string.menu_help))
-        .setIcon(R.drawable.about)
+        .setIcon(R.drawable.share)
         .setView(view)
-        .setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+        .setPositiveButton("Website", new DialogInterface.OnClickListener() {
           public void onClick(DialogInterface dialog, int whichButton) {
-            dismissDialog(HELP_DIALOG_ID);
+            viewWebSite();
           }
-        }).create();
+        })
+        .setNegativeButton(R.string.close, null).create();
     }
     return null;
   }
+  
 
   @Override
   protected void onActivityResult(int requestCode, int resultCode, 
@@ -234,5 +240,17 @@ public class UriList extends ListActivity {
      mAddButton.setText(R.string.button_change);
    }
   }
-
+  public String getVersionInfo() {
+    String version = "";
+    String versionname = "";
+    try {
+      PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
+      version = " (revision " + pi.versionCode + ") ";
+      versionname = pi.versionName;
+      //versiontime = ", " + R.string.installed + " " + sdf.format(new Date(pi.lastUpdateTime));
+    } catch (Exception e) {
+      Log.e("MyExpenses", "Package info not found", e);
+    }
+    return versionname + version;
+  }
 }
