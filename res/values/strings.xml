@@ -34,21 +34,23 @@
   <string name="ftp_connection_failure">Connection to %1$s failed</string>
   <string name="ftp_cancelled">FTP Transfer to %1$s cancelled</string>
   <string name="ftp_fileExists_failure">File already exists at target</string>
-  <string name="help_intro"><i>&app_name;</i> responds to two intents for sharing files through FTP:
-\n1) android.intent.action.SEND: The user manages a list of FTP URIs and selects one as the target 
-for the file being shared. This intent is Android\'s generic standard for sharing files, thus 
-<i>&app_name;</i> will be available from any app allowing to share files.
-\n2) android.intent.action.SENDTO: if the URI in the data is of scheme ftp, <i>&app_name;</i> immediately 
-triggers the upload to this target. This mode is used from my app <i>My Expenses</i>.\n
-<i>&app_name;</i> currently does not prompt for username and password. You have to provide them in the URI,
-e.g.: ftp://login:password@my.example.org:port/my/directory/ .
+  <string name="help_intro">When you launch Send With FTP through its app icon, you manage a list of
+		FTP URIs. You can:\n
+		\n - <b>Add a URI</b> : Simply enter it into the text field at the bottom of the screen and click on <b>Add</b>
+		\n - <b>Edit a URI</b> : Select <b>Edit</b> from an entry\'s context menu. The text field at the bottom gets filled with 
+		its content, and you can edit it, and commit your change through the <b>Change</b> button.
+		\n - <b>Delete a URI</b> : Select <b>Delete</b> from an entry\'s context menu.\n
+		\nIt is from this list that you can select a target URI when you choose Send With FTP
+		for sharing content. Before selecting a target (by clicking on its entry in the list), you can still add, edit, delete entries,
+		as explained above.
 </string>
 <string name="help_heading_whats_new">What\'s new</string>
-<string name="help_whats_new">&#160;- Fix crash when trying to share vcard from contacts application.\n
-    - Do not overwrite files on target</string>
+<string name="help_whats_new">&#160;- Added usage information.\n
+    - Allow editing of entries while selecting share target.</string>
   <string name="button_add">Add</string>
   <string name="button_change">Change</string>
   <string name="menu_delete">Delete</string>
+  <string name="menu_edit">Edit</string>
   <string name="menu_help">Help</string>
   <string name="no_uris">No URIs defined.</string>
   <string name="select_ftp_target">Select an FTP target for the upload</string>
@@ -56,4 +58,7 @@ e.g.: ftp://login:password@my.example.org:port/my/directory/ .
   <string name="close">Close</string>
   <!-- strings below this comment do not need translations -->
   <string name="help_enjoy"><u>Enjoy!</u></string>
+  <string name="help_heading_license">License</string>
+  <string name="help_licence_gpl">GNU General Public License version 3
+    \nhttp://www.gnu.org/licenses/gpl.html .</string>
 </resources>
