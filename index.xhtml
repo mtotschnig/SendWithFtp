@@ -1,8 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<html>
   <head>
-    <meta charset='utf-8'/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
 
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
@@ -17,7 +15,7 @@
     <header>
       <div class="container">
         <h1>Send With FTP</h1>
-        <h2><i>Send With FTP</i> is an Android App that provides intents for sharing files through FTP</h2>
+        <h2><span class="application">Send With FTP</span> is an Android App that provides intents for sharing files through FTP</h2>
 <!--
         <section id="downloads">
           <a href="https://github.com/mtotschnig/SendWithFtp/zipball/master" class="btn">Download as .zip</a>
@@ -30,21 +28,43 @@
 
     <div class="container">
       <section id="main_content">
-        <h3>Summary</h3>
-        <p><i>Send With FTP</i> responds to two intents for sharing files through FTP:</p>
+        <h3>Usage</h3>
+        <p>When you launch <span class="application">Send With FTP</span> through its app icon, you manage a list of
+        FTP URIs. You can:</p>
+        <dl>
+        <dt>Add a URI</dt>
+        <dd>Simply enter it into the text field at the bottom of the screen and click on <span class="guibutton">Add</span></dd>
+        <dt>Edit a URI</dt>
+        <dd>Select <span class="guimenuitem">Edit</span> from an entry's context menu. The text field at the bottom gets filled with 
+        its content, and you can edit it, and commit your change through the <span class="guibutton">Change</span> button.</dd>
+        <dt>Delete a URI</dt>
+        <dd>Select <span class="guimenuitem">Delete</span> from an entry's context menu.</dd>
+        </dl>
+        <p>It is from this list that you can select a target URI when you choose <span class="application">Send With FTP</span>
+        for sharing content. Example use cases supported by <span class="application">Send With FTP</span> are:</p>
+        <ul>
+        <li>Sharing an image from Androids Gallery app.</li>
+        <li>Transfering a file from file manager applications that support sharing like 
+        <span class="application">OI File Manager</span>, <span class="application">ES File Explorer</span> or 
+        <span class="application">File Expert</span>.</li> 
+        <li>Transfering an exported transaction list from <span class="application">My Expenses</span>.</li>
+        </ul>
+        <p><span class="application">Send With FTP</span> currently does not prompt for username and password. You have to provide them in the URI,
+      e.g.: ftp://login:password@my.example.org:port/my/directory/ .</p>
+      
+        <h3>Concept</h3>
+        <p><span class="application">Send With FTP</span> responds to two intents for sharing files through FTP:</p>
         <ol>
           <li>android.intent.action.SEND: The user manages a list of FTP URIs and selects one as the target 
           for the file being shared. This intent is Android's generic standard for sharing files, thus 
-          <i>Send With FTP</i> will be available from any app allowing to share files.</li>
-          <li>android.intent.action.SENDTO: if the URI in the data is of scheme ftp, <i>Send With FTP</i> immediately 
-          triggers the upload to this target. This mode is used from my app <a href="http://myexpenses.totschnig.org"><i>My Expenses</i></a>.</li>
+          <span class="application">Send With FTP</span> will be available from any app allowing to share files.</li>
+          <li>android.intent.action.SENDTO: if the URI in the data is of scheme ftp, <span class="application">Send With FTP</span> immediately 
+          triggers the upload to this target. This mode is used from my app <a href="http://myexpenses.totschnig.org"><span class="application">My Expenses</span></a>.</li>
        </ol>
-      <p><i>Send With FTP</i> currently does not prompt for username and password. You have to provide them in the URI,
-      e.g.: ftp://login:password@my.example.org:port/my/directory/ .</p>
 
-      <h3>Integrating <i>Send With FTP</i> into your app</h3>
+      <h3>Integrating <span class="application">Send With FTP</span> into your app</h3>
       <p>If you want to provide users of your app, the possibility to transfer content to an FTP server
-      you could suggest the installation of <i>Send With FTP</i> and create an intent for initiating 
+      you could suggest the installation of <span class="application">Send With FTP</span> and create an intent for initiating 
       the transfer with code similar to the following</p>
       <pre>
       <code>
@@ -67,7 +87,7 @@ with the following line in <code>res/values/strings.xml</code>:
       <pre>
       <code>
 <![CDATA[<string name="no_app_handling_ftp_available">No app handling ftp
-  available. Install <i>Send With FTP</i> from Google Play?</string>]]>
+  available. Install <span class="application">Send With FTP</span> from Google Play?</string>]]>
       </code>
       </pre>
       <h3>Install</h3>  
@@ -99,7 +119,7 @@ with the following line in <code>res/values/strings.xml</code>:
     </ul>
     <h3>Feedback</h3>
     <p>
-    If you find <i>Send With FTP</i> useful, leave a comment in the <a href="market://details?id=org.totschnig.sendwithftp">Market</a>. 
+    If you find <span class="application">Send With FTP</span> useful, leave a comment in the <a href="market://details?id=org.totschnig.sendwithftp">Market</a>. 
     If you find a problem, have a suggestion for an improvement, or would like to contribute, please
     contact <a href="mailto:michael@totschnig.org">Michael Totschnig</a>.
     </p>

@@ -243,17 +243,28 @@ a {
 .cf {
   zoom:1;
 }
-  dl.versionlist dt {
-    float: left; font-weight: bold; margin-bottom: -1px; margin-right: 2px;
-  } 
-  dl.versionlist dd {
-    margin-left: 4em; 
-  }
-  .versioncode {
-    display: inline-block;
-    width: 4em;
-    }
-  .versiondate {
-    display: inline-block;
-    width: 10em;
-  }
+dl.versionlist dt {
+  float: left; font-weight: bold; margin-bottom: -1px; margin-right: 2px;
+} 
+dl.versionlist dd {
+  margin-left: 4em; 
+}
+.versioncode {
+  display: inline-block;
+  width: 4em;
+}
+.versiondate {
+  display: inline-block;
+  width: 10em;
+}
+.application {
+  font-style: italic;
+}
+.guibutton, .guimenu {
+	background-color: #CFCFCF;
+	padding: 2px;
+	color: #000000;
+}
+.guimenuitem, .guilabel {
+	font-weight: bold;
+}
