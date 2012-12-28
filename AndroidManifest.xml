@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.totschnig.sendwithftp"
     android:versionCode="3"
-    android:versionName="1.0.5"
+    android:versionName="1.0.6"
     android:installLocation="auto" >
 
   <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="8"/>
@@ -27,6 +27,12 @@
       <intent-filter>
         <action android:name="android.intent.action.SENDTO"/>
         <data android:scheme="ftp" android:mimeType="*/*" />
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.SENDTO"/>
+        <data android:scheme="ftp" />
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
       </intent-filter>
