@@ -41,6 +41,7 @@ public class UriList extends ListActivity {
   private static final int DELETE_COMMAND_ID = 1;
   private static final int WEB_COMMAND_ID = 2;
   private static final int INFO_COMMAND_ID = 3;
+  private static final int EDIT_COMMAND_ID = 4;
   private static final int INFO_DIALOG_ID = 0;
   private static final int ACTIVITY_TRANSFER = 0;
   private UriDataSource datasource;
@@ -114,6 +115,7 @@ public class UriList extends ListActivity {
       ContextMenuInfo menuInfo) {
     super.onCreateContextMenu(menu, v, menuInfo);
     menu.add(0, DELETE_COMMAND_ID, 0, R.string.menu_delete);
+    menu.add(0, EDIT_COMMAND_ID, 0, R.string.menu_edit);
   } 
   @Override
   public boolean onContextItemSelected(MenuItem item) {
@@ -126,7 +128,13 @@ public class UriList extends ListActivity {
       datasource.deleteUri(info.id);
       mUriCursor.requery();
       return true;
+    case EDIT_COMMAND_ID:
+      mUriCursor.moveToPosition(info.position);
+      mUriText.setText(mUriCursor.getString(1));
+      mEditedRow = info.id;
+      mAddButton.setText(R.string.button_change);
     }
+      
     return super.onContextItemSelected(item);   
   }
   protected void onListItemClick(ListView l, View v, int position, long id) {
@@ -138,10 +146,6 @@ public class UriList extends ListActivity {
       i.setDataAndType(android.net.Uri.parse(target),type);
       i.putExtras(extras);
       startActivityForResult(i, ACTIVITY_TRANSFER);
-    } else {
-      mUriText.setText(mUriCursor.getString(1));
-      mEditedRow = id;
-      mAddButton.setText(R.string.button_change);
     }
   }
   @Override
