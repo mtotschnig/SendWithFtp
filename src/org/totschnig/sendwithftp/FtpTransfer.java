@@ -31,6 +31,7 @@ import org.apache.commons.net.ftp.FTPReply;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
@@ -50,7 +51,7 @@ public class FtpTransfer extends Activity {
   Uri target;
   InputStream is;
   String fileName;
-  int fileType;
+  int fileType = FTP.BINARY_FILE_TYPE;
   
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -68,22 +69,59 @@ public class FtpTransfer extends Activity {
       String type = intent.getType();
       is = null;
       fileName = null;
-      fileType = 0;
       if (type != null) {
         Log.i("FtpTransfer",type);
         if ("text/plain".equals(type)) {
           handleSendText(intent); // Handle text being sent
+        } else if ("text/x-vcard".equals(type)) {
+          handleSendVcard(intent); // Handle vcard being sent
         } else if (type.startsWith("image/")) {
           handleSendImage(intent); // Handle single image being sent
         }
       }
+      if (is == null) {
+        handleFallBack(intent);
+      }
       if (is != null) {
         showProgressDialog();
+        Log.i("FtpTransfer","fileType: "+fileType);
         task = new FtpAsyncTask(this, is, target,fileName,fileType);
         task.execute();
       } else {
-        Toast.makeText(getBaseContext(), "Cannot handle shared data", Toast.LENGTH_LONG).show();;
+        Toast.makeText(getBaseContext(), "Cannot handle shared data", Toast.LENGTH_LONG).show();
         finish();
+      }
+    }
+  }
+  private void handleSendVcard(Intent intent) {
+    Uri uri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+    if (uri != null) {
+      ContentResolver cr = getContentResolver();
+      try {
+          //the following would only have a chance to work if FtpTransfer would request permission READ_CONTACTS
+          //we would then also need to find out a meaningful filename
+          is = cr.openInputStream(uri);
+          fileType = FTP.ASCII_FILE_TYPE;
+          fileName = "contact.vcard";
+      } catch (FileNotFoundException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+      } catch (SecurityException e) {
+        Toast.makeText(getBaseContext(), "No permission to read contacts", Toast.LENGTH_SHORT).show();;
+      }
+    }
+  }
+  private void handleFallBack(Intent intent) {
+    Uri uri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+    if (uri != null) {
+      File source = new File (uri.getPath());
+      if (source.exists()) {
+        fileName = source.getName();
+        try {
+          is = new FileInputStream(source);
+        } catch (FileNotFoundException e) {
+          e.printStackTrace();
+        }
       }
     }
   }
@@ -99,10 +137,9 @@ public class FtpTransfer extends Activity {
     Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
     if (imageUri != null) {
       // Get resource path
-      String fileuri = parseUriTofileName(imageUri);
+      String fileuri = parseImageUriTofileName(imageUri);
       File source = new File (fileuri);
       fileName = source.getName();
-      fileType = FTP.BINARY_FILE_TYPE;
       try {
         is = new FileInputStream(source);
       } catch (FileNotFoundException e) {
@@ -121,9 +158,8 @@ public class FtpTransfer extends Activity {
           }
     });
   }
-  public String parseUriTofileName(Uri uri) {
+  public String parseImageUriTofileName(Uri uri) {
     String selectedImagePath = null;
-    String filemanagerPath = uri.getPath();
 
     String[] projection = { MediaStore.Images.Media.DATA };
     Cursor cursor = managedQuery(uri, projection, null, null, null);
@@ -135,14 +171,7 @@ public class FtpTransfer extends Activity {
       cursor.moveToFirst();
       selectedImagePath = cursor.getString(column_index);
     }
-
-    if (selectedImagePath != null) {
-      return selectedImagePath;
-    }
-    else if (filemanagerPath != null) {
-      return filemanagerPath;
-    }
-     return null;
+    return selectedImagePath;
   }
   
   void markAsDone() {
@@ -250,6 +279,11 @@ public class FtpTransfer extends Activity {
               }
             }
             if (isCancelled()) {
+              return(null);
+            }
+            //check if file exists
+            if (mFTP.listFiles(fileName).length >0) {
+              setResult(new Result(false, R.string.ftp_fileExists_failure));
               return(null);
             }
             // Upload file to FTP Server

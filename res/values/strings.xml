@@ -33,6 +33,7 @@
   <string name="ftp_connection_refused">Connection to %1$s refused</string>
   <string name="ftp_connection_failure">Connection to %1$s failed</string>
   <string name="ftp_cancelled">FTP Transfer to %1$s cancelled</string>
+  <string name="ftp_fileExists_failure">File already exists at target</string>
   <string name="help_feedback">If you find <i>&app_name;</i> useful, 
     please leave a comment in the <a href="market://details?id=org.totschnig.sendwithftp">Market</a>. 
     If you find a problem, have a suggestion for an improvement, or would like to contribute, please
