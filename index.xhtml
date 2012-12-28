@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <html>
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset='utf-8'/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
 
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
@@ -62,7 +63,13 @@ if (packageManager.queryIntentActivities(intent,0).size() == 0) {
 }
       </code>
       </pre>
-      
+with the following line in <code>res/values/strings.xml</code>:
+      <pre>
+      <code>
+<![CDATA[<string name="no_app_handling_ftp_available">No app handling ftp
+  available. Install <i>Send With FTP</i> from Google Play?</string>]]>
+      </code>
+      </pre>
       <h3>Install</h3>  
       <p><a href="http://play.google.com/store/apps/details?id=org.totschnig.sendwithftp">
         <img alt="Android app on Google Play"
