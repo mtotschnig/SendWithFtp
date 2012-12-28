@@ -17,46 +17,74 @@
       <div class="container">
         <h1>Sendwithftp</h1>
         <h2>SendWithFtp is an Android App that provides intents for sharing files through FTP</h2>
-
+<!--
         <section id="downloads">
           <a href="https://github.com/mtotschnig/SendWithFtp/zipball/master" class="btn">Download as .zip</a>
           <a href="https://github.com/mtotschnig/SendWithFtp/tarball/master" class="btn">Download as .tar.gz</a>
           <a href="https://github.com/mtotschnig/SendWithFtp" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
         </section>
+        -->
       </div>
     </header>
 
     <div class="container">
       <section id="main_content">
-        <h3>Welcome to GitHub Pages.</h3>
+        <h3>Summary</h3>
+        <p><i>Send With FTP</i> responds to two intents for sharing files through FTP:</p>
+        <ol>
+          <li>android.intent.action.SEND: The user manages a list of FTP URIs and selects one as the target 
+          for the file being shared. This intent is Android's generic standard for sharing files, thus 
+          <i>Send With FTP</i> will be available from any app allowing to share files.</li>
+          <li>android.intent.action.SENDTO: if the URI in the data is of scheme ftp, <i>Send With FTP</i> immediately 
+          triggers the upload to this target. This mode is used from my app <a href="http://myexpenses.totschnig.org"><i>My Expenses</i></a>.</li>
+       </ol>
+      <p><i>Send With FTP</i> currently does not prompt for username and password. You have to provide them in the URI,
+      e.g.: ftp://login:password@my.example.org:port/my/directory/ .</p>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+      <h3>Integrating <i>Send With FTP</i> into your app</h3>
+      <p>If you want to provide users of your app, the possibility to transfer content to an FTP server
+      you could suggest the installation of <i>Send With FTP</i> and create an intent for initiating 
+      the transfer with code similar to the following</p>
+      <pre>
+      <code>
+File file = new File(dir,name);
+String mimeType = "text/qif";
+String target= "ftp://login:password@my.example.org:port/my/directory/";
+intent = new Intent(android.content.Intent.ACTION_SENDTO);
+intent.setDataAndType(android.net.Uri.parse(target),mimeType);
+intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+if (packageManager.queryIntentActivities(intent,0).size() == 0) {
+  Toast.makeText(getBaseContext(),
+    R.string.no_app_handling_ftp_available, Toast.LENGTH_LONG)
+  .show();
+} else {
+  startActivity(intent);
+}
+      </code>
+      </pre>
+      
+      <h3>Install</h3>  
+      <p><a href="http://play.google.com/store/apps/details?id=org.totschnig.sendwithftp">
+        <img alt="Android app on Google Play"
+       src="http://developer.android.com/images/brand/en_generic_rgb_wo_60.png" />
+       </a>
+       </p>
+      <h3>Sourcecode</h3>
+      <p>
+      <a class="btn btn-github" href="https://github.com/mtotschnig/SendWithFtp"><span class="icon"></span>View on GitHub</a>
+      </p>
+      <h3>Licence</h3>
+      <p>
+      <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License version 3</a>
+      </p>
+      <h3 id="changelog">Changelog</h3>
+      <dl class="versionlist">
+        <dt><span class="versioncode">1.0.6</span><span class="versiondate">December 28 2012</span></dt>
+          <dd>Fix crash when sharing vcard from contacts application. Do not overwrite files on target.</dd>
+        <dt><span class="versioncode">1.0.5</span><span class="versiondate">December 26 2012</span></dt>
+        <dd>Now works with more use cases like sharing pictures from galery or files from file explorer.</dd>
+    </dl>
       </section>
     </div>
-
-    
   </body>
 </html>
