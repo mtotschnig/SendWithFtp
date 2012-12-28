@@ -33,15 +33,6 @@
   <string name="ftp_connection_refused">Verbindung mit %1$s verweigert</string>
   <string name="ftp_connection_failure">Verbindung mit %1$s gescheitert</string>
   <string name="ftp_cancelled">FTP Übertragung nach %1$s abgebrochen</string>
-  <string name="help_feedback">Wenn Ihnen <i>&app_name;</i> nützlich ist, geben Sie doch im
-      <a href="market://details?id=org.totschnig.sendwithftp">Market</a> dazu einen Kommentar ab.
-      Wenn Sie auf ein Problem stoßen, einen Verbesserungsvorschlag haben oder einen Beitrag leisten
-       wollen, bitte kontaktieren Sie
-       <a href="mailto:michael@totschnig.org">Michael Totschnig</a>.</string>
-  <string name="help_heading_feedback"><u>Feedback</u></string>
-  <string name="help_heading_credits"><u>Abspann</u></string>
-  <string name="help_heading_license"><u>Lizenz</u></string>
-  <string name="help_heading_project_home"><u>Quell-Code</u></string>
   <string name="help_intro">&app_name; reagiert auf zwei Intents für das Teilen von Dateien mittels FTP:
 \n1) android.intent.action.SEND: Der Benützer kann seine Liste von FTP URIs verwalten und eine davon als Ziel
 für die Übertragung der zu teilenden Datei auswählen. Dieses Intent wird in Android verwendet, um Dateien aus einer
@@ -49,12 +40,11 @@ App zu exportieren. &app_name; steht dadurch in allen Apps zur Verfügung, die d
 \n2) android.intent.action.SENDTO: falls in der data Eigenschaft des Intents eine FTP URI mitgeschickt wird: 
 &app_name; initiert dann die Dateiübertragung zu diesem Ziel. Dieser Modus wird von <i>My Expenses</i> verwendet.\n
 <i>&app_name;</i> fragt zur Zeit nicht nach Benutzername und Passwort. Diese müssen in der URI inkludiert werden,
-e.g.: ftp://login:password@my.example.org:port/mein/ordner/ .
+e.g.: ftp://login:password@my.example.org:port/mein/ordner/ .\n
+<i>&app_name;</i> erlaubt zur Zeit nicht die interaktive Eingabe von Benutzername und Passwort.
+Diese müssen in der URI angegeben werden, z.B.: ftp://login:password@my.example.org:port/my/directory/ 
   </string>
-  <string name="credits_text">Design des Hilfe-Dialogs von Mathdoku.
-      \nFranzösische, italienische und spanische Übersetzung von Laurent Collombet.
-  </string>
-  
+  <string name="help_heading_whats_new">Neue Funktionen</string>  
   <string name="button_add">Hinzufügen</string>
   <string name="button_change">Verändern</string>
   <string name="menu_delete">Löschen</string>

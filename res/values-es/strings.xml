@@ -34,16 +34,6 @@
   <string name="ftp_connection_refused">Conexión con %1$s negada</string>
   <string name="ftp_connection_failure">Conexión con %1$s ha fallado.</string>
   <string name="ftp_cancelled">Transferencia FTP a %1$s abortada</string>
-  <string name="help_feedback">Si <i>&app_name;</i> le es útil, por favor, dé un comentario en
-      <a href="market://details?id=org.totschnig.sendwithftp">Market</a>.
-      Si encuentra algún problema, tiene alguna sugerencia para la mejora o desea contribuir, por
-      favor, póngase en contacto con <a href="mailto:michael@totschnig.org">Michael Totschnig</a>.
-  </string>
-  <string name="help_heading_feedback"><u>Feedback</u></string>
-  <string name="help_heading_credits"><u>Créditos</u></string>
-  <string name="help_heading_license"><u>Licencia</u></string>
-   <string name="credits_text">Diseño del diálogo de ayuda por Mathdoku.
-      \nTraducción al francés, al español y al italiano por Laurent Collombet.</string>
   <string name="button_add">Añadir</string>
   <string name="button_change">Cambiar</string>
   <string name="menu_delete">Borrar</string>

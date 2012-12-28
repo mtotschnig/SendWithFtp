@@ -33,15 +33,6 @@
   <string name="ftp_connection_failure">Collegamento a %1$s faillito</string>
   <string name="ftp_cancelled">Trasferimento FTP a %1$s cancellato</string>
   <string name="ftp_uploading_wait">Scarica in corso. Attendere prego &#8230;</string>
-  <string name="help_feedback">Se si trova <i>&app_name;</i> utile,si prega di lasciare un commento 
-      nel <a href="market://details?id=org.totschnig.sendwithftp">Mercato</a>. Se si trova un
-      problema, un suggerimento per un miglioramento, o se volete contribuire, si prega di
-      contattare <a href="mailto:michael@totschnig.org">Michael Totschnig</a>.</string>
-  <string name="help_heading_feedback"><u>Feedback</u></string>
-  <string name="help_heading_credits"><u>Generico</u></string>
-  <string name="help_heading_license"><u>Licenza</u></string>
-  <string name="credits_text">Disegno della pagina della Guida copiato da Mathdoku.
-      \nTraduzione francese, spagnola e italiane di Laurent Collombet.</string>
   <string name="button_add">Aggiungere</string>
   <string name="button_change">Cambiare</string>
   <string name="menu_delete">Cancellare</string>
