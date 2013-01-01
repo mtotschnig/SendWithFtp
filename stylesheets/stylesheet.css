@@ -268,3 +268,6 @@ dl.versionlist dd {
 .guimenuitem, .guilabel {
 	font-weight: bold;
 }
+#feedback img, #feedback input {
+ vertical-align: middle; 
+}
