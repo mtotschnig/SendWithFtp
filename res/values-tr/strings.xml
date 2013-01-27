@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+  This file is part of Send With FTP.
+  Send With FTP is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  Send With FTP is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public License
+  along with Send With FTP.  If not, see <http://www.gnu.org/licenses/>.
+ -->
+ <!DOCTYPE resources [
+  <!ENTITY app_name "Send With FTP">
+]>
+<resources>
+  <string name="app_name">&app_name;</string>
+  <string name="ftp_uri_malformed">Yanlış yapılandırılmış URI</string>
+  <string name="ftp_success">%1$s konumuna yükleme başarılı oldu</string>
+  <string name="ftp_failure">%1$s konumuna yüklenirken hata oluştu: %2$s</string>
+  <string name="ftp_socket_exception">%1$s konumuna yüklenirken soket istisnası</string>
+  <string name="ftp_io_exception">%1$s konumuna yüklenme yapılırken GÇ istisnası</string>
+  <string name="ftp_login_failure">%1$s konumuna yükleme yapılırken oturum açma başarısız oldu</string>
+  <string name="ftp_setFileType_failure">%1$s konumuna yükleme yapılırken dosya tipi ASCII olarak belirtilemedi</string>
+  <string name="ftp_changeWorkingDirectory_failure">%1$s konumuna yükleme denenirken çalışma klasörü değiştirilemedi</string>
+  <string name="ftp_uploading_wait">%1$s konumuna FTP transferi. Bekleyiniz &#8230;</string>
+  <string name="ftp_connection_refused">%1$s konumuna bağlantı reddedildi</string>
+  <string name="ftp_connection_failure">%1$s konumu ile bağlantı başarısız oldu</string>
+  <string name="ftp_cancelled">%1$s konumuna FTP transferi iptal edildi</string>
+  <string name="ftp_fileExists_failure">Hedefte dosya zaten mevcut</string>
+  <string name="help_intro">Send with FTP uygulama ikonu ile başlatıldığında bir FTP URI listesi yönetirsiniz. Yapabilecekleriniz şunlardır:\n
+		\n - <b>URI ilâve et</b> : Ekranın alt kısmındaki metin alanına girip <b>İlâve Et</b> düğmesine dokunun.
+		\n - <b>URI düzenle</b> : Bir unsurun bağlam menüsünden <b>Düzenle</b>\'yi seçin. Alttaki metin alanı içeriği ile doldurulacaktır 
+		ki bu, içeriği düzenleyip değişikliği <b>Değiştir</b> düğmesi ile teyit etmenize imkân verir.
+		\n - <b>URI sil</b> : Bir unsurun bağlam menüsünden <b>Sil</b> seçeneğini seçin.\n
+		\nİçerik paylaşmak için Send with FTP seçildiğinde hedef URI\'yi bu listeden seçebilirsiniz. Bir hedef seçmeden önce (listede ona dokunarak), yukarıda açıklandığı gibi unsur eklemek, düzenlemek ve silmek mümkündür.
+  </string>
+  <string name="help_heading_whats_new">Yenilikler</string>
+  <string name="help_whats_new">&#160;- Kullanım verileri eklendi.\n
+    - Paylaşım hedefi seçilirken girdilerin düzenlenmesine izin veriliyor.</string>
+  <string name="button_add">İlâve et</string>
+  <string name="button_change">Değiştir</string>
+  <string name="menu_delete">Sil</string>
+  <string name="menu_edit">Düzenle</string>
+  <string name="menu_help">Yardım</string>
+  <string name="no_uris">Hiçbir URI belirtilmemiş.</string>
+  <string name="select_ftp_target">Yükleme için bir FTP hedefi seçin</string>
+  <string name="manage_ftp_targets">FTP hedeflerini yönet</string>
+</resources>
