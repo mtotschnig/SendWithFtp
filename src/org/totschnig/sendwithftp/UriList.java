@@ -151,7 +151,7 @@ public class UriList extends ListActivity {
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     super.onCreateOptionsMenu(menu);
-    menu.add(Menu.NONE,INFO_COMMAND_ID,Menu.NONE,"Info")
+    menu.add(Menu.NONE,INFO_COMMAND_ID,Menu.NONE,R.string.menu_info)
         .setIcon(android.R.drawable.ic_menu_info_details);
     return true;
   }
@@ -194,7 +194,7 @@ public class UriList extends ListActivity {
         .setTitle(getResources().getString(R.string.app_name) + " " + getResources().getString(R.string.menu_help))
         .setIcon(R.drawable.share)
         .setView(view)
-        .setPositiveButton("Website", new DialogInterface.OnClickListener() {
+        .setPositiveButton(R.string.button_website, new DialogInterface.OnClickListener() {
           public void onClick(DialogInterface dialog, int whichButton) {
             viewWebSite();
           }

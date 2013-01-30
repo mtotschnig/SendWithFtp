@@ -45,13 +45,16 @@
 		as explained above.
   </string>
   <string name="help_heading_whats_new">What\'s new</string>
+  <string name="help_heading_usage">Usage</string>
   <string name="help_whats_new">&#160;- Added usage information.\n
     - Allow editing of entries while selecting share target.</string>
   <string name="button_add">Add</string>
   <string name="button_change">Change</string>
+  <string name="button_website">Website</string>
   <string name="menu_delete">Delete</string>
   <string name="menu_edit">Edit</string>
   <string name="menu_help">Help</string>
+  <string name="menu_info">Info</string>
   <string name="no_uris">No URIs defined.</string>
   <string name="select_ftp_target">Select an FTP target for the upload</string>
   <string name="manage_ftp_targets">Manage your FTP targets</string>
