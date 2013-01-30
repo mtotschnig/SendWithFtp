@@ -15,7 +15,7 @@
   along with Send With FTP.  If not, see <http://www.gnu.org/licenses/>.
  -->
  <!DOCTYPE resources [
-  <!ENTITY app_name "Send With FTP">
+  <!ENTITY app_name "FTP ile Gönder">
 ]>
 <resources>
   <string name="app_name">&app_name;</string>
@@ -32,12 +32,12 @@
   <string name="ftp_connection_failure">%1$s konumu ile bağlantı başarısız oldu</string>
   <string name="ftp_cancelled">%1$s konumuna FTP transferi iptal edildi</string>
   <string name="ftp_fileExists_failure">Hedefte dosya zaten mevcut</string>
-  <string name="help_intro">Send with FTP uygulama ikonu ile başlatıldığında bir FTP URI listesi yönetirsiniz. Yapabilecekleriniz şunlardır:\n
+  <string name="help_intro">&app_name; uygulama ikonu ile başlatıldığında bir FTP URI listesi yönetirsiniz. Yapabilecekleriniz şunlardır:\n
 		\n - <b>URI ilâve et</b> : Ekranın alt kısmındaki metin alanına girip <b>İlâve Et</b> düğmesine dokunun.
 		\n - <b>URI düzenle</b> : Bir unsurun bağlam menüsünden <b>Düzenle</b>\'yi seçin. Alttaki metin alanı içeriği ile doldurulacaktır 
 		ki bu, içeriği düzenleyip değişikliği <b>Değiştir</b> düğmesi ile teyit etmenize imkân verir.
 		\n - <b>URI sil</b> : Bir unsurun bağlam menüsünden <b>Sil</b> seçeneğini seçin.\n
-		\nİçerik paylaşmak için Send with FTP seçildiğinde hedef URI\'yi bu listeden seçebilirsiniz. Bir hedef seçmeden önce (listede ona dokunarak), yukarıda açıklandığı gibi unsur eklemek, düzenlemek ve silmek mümkündür.
+		\nİçerik paylaşmak için &app_name; seçildiğinde hedef URI\'yi bu listeden seçebilirsiniz. Bir hedef seçmeden önce (listede ona dokunarak), yukarıda açıklandığı gibi unsur eklemek, düzenlemek ve silmek mümkündür.
   </string>
   <string name="help_heading_whats_new">Yenilikler</string>
   <string name="help_whats_new">&#160;- Kullanım verileri eklendi.\n
@@ -50,4 +50,8 @@
   <string name="no_uris">Hiçbir URI belirtilmemiş.</string>
   <string name="select_ftp_target">Yükleme için bir FTP hedefi seçin</string>
   <string name="manage_ftp_targets">FTP hedeflerini yönet</string>
+  <string name="help_enjoy"><u>İyi kullanımlar!</u></string>
+  <string name="help_heading_license">Lisans</string>
+  <string name="help_licence_gpl">GNU General Public License 3. sürüm
+    \nhttp://www.gnu.org/licenses/gpl.html .</string>
 </resources>
