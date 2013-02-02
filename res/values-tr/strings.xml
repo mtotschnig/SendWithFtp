@@ -40,13 +40,16 @@
 		\nİçerik paylaşmak için &app_name; seçildiğinde hedef URI\'yi bu listeden seçebilirsiniz. Bir hedef seçmeden önce (listede ona dokunarak), yukarıda açıklandığı gibi unsur eklemek, düzenlemek ve silmek mümkündür.
   </string>
   <string name="help_heading_whats_new">Yenilikler</string>
+  <string name="help_heading_usage">Kullanım</string>
   <string name="help_whats_new">&#160;- Kullanım verileri eklendi.\n
     - Paylaşım hedefi seçilirken girdilerin düzenlenmesine izin veriliyor.</string>
   <string name="button_add">İlâve et</string>
   <string name="button_change">Değiştir</string>
+  <string name="button_website">Ağ sitesi</string>
   <string name="menu_delete">Sil</string>
   <string name="menu_edit">Düzenle</string>
   <string name="menu_help">Yardım</string>
+  <string name="menu_info">Malumat</string>
   <string name="no_uris">Hiçbir URI belirtilmemiş.</string>
   <string name="select_ftp_target">Yükleme için bir FTP hedefi seçin</string>
   <string name="manage_ftp_targets">FTP hedeflerini yönet</string>
