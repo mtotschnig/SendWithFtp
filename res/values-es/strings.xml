@@ -35,8 +35,8 @@
   <string name="ftp_connection_failure">Conexión con %1$s ha fallado.</string>
   <string name="ftp_cancelled">Transferencia FTP a %1$s abortada</string>
   <string name="help_heading_whats_new">Novedades</string>
-  <string name="help_whats_new">&#160;- Información de uso. \n
-     - Permitir la edición de las entradas mientras de la selección</string>
+  <string name="help_whats_new">&#160;- Traducción al turco.\n
+     - Mostrar URI ejemplo como indicio</string>
   <string name="button_add">Añadir</string>
   <string name="button_change">Cambiar</string>
   <string name="menu_delete">Borrar</string>

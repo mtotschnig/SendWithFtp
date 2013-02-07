@@ -34,8 +34,8 @@
   <string name="ftp_connection_failure">Verbindung mit %1$s gescheitert</string>
   <string name="ftp_cancelled">FTP Übertragung nach %1$s abgebrochen</string>
   <string name="help_heading_whats_new">Neue Funktionen</string>
-  <string name="help_whats_new">&#160;- Gebrauchshinweis hinzugefügt.\n
-    - Beim Auswählen des Zieles Verändern der Einträge ermöglichen.</string> 
+  <string name="help_whats_new">&#160;- Türkische Übersetzung.\n
+    - Beispiel URI als Hinweis anzeigen.</string>
   <string name="button_add">Hinzufügen</string>
   <string name="button_change">Verändern</string>
   <string name="menu_delete">Löschen</string>

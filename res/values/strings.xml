@@ -46,8 +46,8 @@
   </string>
   <string name="help_heading_whats_new">What\'s new</string>
   <string name="help_heading_usage">Usage</string>
-  <string name="help_whats_new">&#160;- Added usage information.\n
-    - Allow editing of entries while selecting share target.</string>
+  <string name="help_whats_new">&#160;- Turkish translation.\n
+    - Show example URI as hint.</string>
   <string name="button_add">Add</string>
   <string name="button_change">Change</string>
   <string name="button_website">Website</string>
