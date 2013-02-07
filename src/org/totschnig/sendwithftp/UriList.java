@@ -48,7 +48,7 @@ public class UriList extends ListActivity {
   private Cursor mUriCursor;
   private Button mAddButton;
   private EditText mUriText;
-  private String uriPrefix = "ftp://";
+  private String uriHint = "ftp://login:password@my.example.org:port/my/directory/";
   private String action;
   private Bundle extras;
   private String type;
@@ -83,7 +83,7 @@ public class UriList extends ListActivity {
     final SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, mUriCursor, from, to); 
     setListAdapter(adapter);
     mUriText = (EditText) findViewById(R.id.uri_new);
-    mUriText.setText(uriPrefix);
+    mUriText.setText(uriHint);
     mAddButton = (Button) findViewById(R.id.addOperation);
     mAddButton.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -105,7 +105,7 @@ public class UriList extends ListActivity {
       if (mEditedRow != 0L) {
         resetAddButton();
       } else {
-        mUriText.setText(uriPrefix);
+        mUriText.setText(uriHint);
       }
       mAddButton.setText(R.string.button_add);
     }
@@ -221,7 +221,7 @@ public class UriList extends ListActivity {
     }
   }
   private void resetAddButton() {
-    mUriText.setText(uriPrefix);
+    mUriText.setText(uriHint);
     mEditedRow = 0L;
     mAddButton.setText(R.string.button_add);
   }
