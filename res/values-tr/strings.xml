@@ -41,8 +41,8 @@
   </string>
   <string name="help_heading_whats_new">Yenilikler</string>
   <string name="help_heading_usage">Kullanım</string>
-  <string name="help_whats_new">&#160;- Kullanım verileri eklendi.\n
-    - Paylaşım hedefi seçilirken girdilerin düzenlenmesine izin veriliyor.</string>
+  <string name="help_whats_new">&#160;- Türkçe tercüme.\n
+    - Örnek bir URI\'yi ipucu olarak göster.</string>
   <string name="button_add">İlâve et</string>
   <string name="button_change">Değiştir</string>
   <string name="button_website">Ağ sitesi</string>
