@@ -35,7 +35,7 @@
   <string name="ftp_cancelled">Téléchargement FTP vers %1$s annulé</string>
   <string name="help_heading_whats_new">Nouveautés</string>
   <string name="help_whats_new">&#160;- Traduction en turc.\n
-    - Afficher un exemple d'URI comme indice.</string>
+    - Afficher un exemple d\'URI comme indice.</string>
   <string name="button_add">Ajouter</string>
   <string name="button_change">Modifier</string>
   <string name="menu_delete">Effacer</string>
