@@ -14,6 +14,8 @@
 */
 package org.totschnig.sendwithftp;
 
+import java.io.File;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
@@ -36,14 +38,17 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.Toast;
 
 public class UriList extends ListActivity {
   private static final int DELETE_COMMAND_ID = 1;
   private static final int WEB_COMMAND_ID = 2;
   private static final int INFO_COMMAND_ID = 3;
   private static final int EDIT_COMMAND_ID = 4;
+  private static final int PICK_COMMAND_ID = 5;
   private static final int INFO_DIALOG_ID = 0;
   private static final int ACTIVITY_TRANSFER = 0;
+  private static final int ACTIVITY_PICK = 1;
   private UriDataSource datasource;
   private Cursor mUriCursor;
   private Button mAddButton;
@@ -52,7 +57,14 @@ public class UriList extends ListActivity {
   private String action;
   private Bundle extras;
   private String type;
+  /**
+   * row that has been selected for editing
+   */
   private Long mEditedRow = 0L;
+  /**
+   * row for which a pick file intent has been launched
+   */
+  private String mSelectedUri = "";
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -116,6 +128,7 @@ public class UriList extends ListActivity {
     super.onCreateContextMenu(menu, v, menuInfo);
     menu.add(0, DELETE_COMMAND_ID, 0, R.string.menu_delete);
     menu.add(0, EDIT_COMMAND_ID, 0, R.string.menu_edit);
+    menu.add(0, PICK_COMMAND_ID, 0, R.string.menu_pick);
   } 
   @Override
   public boolean onContextItemSelected(MenuItem item) {
@@ -133,6 +146,13 @@ public class UriList extends ListActivity {
       mUriText.setText(mUriCursor.getString(1));
       mEditedRow = info.id;
       mAddButton.setText(R.string.button_change);
+      return true;
+    case PICK_COMMAND_ID:
+      mUriCursor.moveToPosition(info.position);
+      mSelectedUri = mUriCursor.getString(1);
+      Intent intent = new Intent("org.openintents.action.PICK_FILE");
+      startActivityForResult(intent, ACTIVITY_PICK);
+      return true;
     }
       
     return super.onContextItemSelected(item);   
@@ -211,6 +231,20 @@ public class UriList extends ListActivity {
     super.onActivityResult(requestCode, resultCode, intent);
     if (requestCode == ACTIVITY_TRANSFER)
       finish();
+    else if (requestCode == ACTIVITY_PICK) {
+      String filename = intent.getDataString();
+      if (filename != null) {
+        // Get rid of URI prefix:
+        if (filename.startsWith("file://")) {
+          filename = filename.substring(7);
+        }
+        Intent i = new Intent(this, FtpTransfer.class);
+        String target = mSelectedUri;
+        i.setData(android.net.Uri.parse(target));
+        i.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(filename)));
+        startActivity(i);
+      }
+    }
   }
   @Override
   public void onBackPressed() {
@@ -235,6 +269,7 @@ public class UriList extends ListActivity {
   protected void onSaveInstanceState(Bundle outState) {
    super.onSaveInstanceState(outState);
    outState.putLong("editedRow", mEditedRow);
+   outState.putString("selectedUri", mSelectedUri);
   }
   @Override
   protected void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -243,6 +278,7 @@ public class UriList extends ListActivity {
    if (mEditedRow != 0L) {
      mAddButton.setText(R.string.button_change);
    }
+   mSelectedUri = savedInstanceState.getString("selectedUri");
   }
   public String getVersionInfo() {
     String version = "";
@@ -253,7 +289,7 @@ public class UriList extends ListActivity {
       versionname = pi.versionName;
       //versiontime = ", " + R.string.installed + " " + sdf.format(new Date(pi.lastUpdateTime));
     } catch (Exception e) {
-      Log.e("MyExpenses", "Package info not found", e);
+      Log.e("SendWithFtp", "Package info not found", e);
     }
     return versionname + version;
   }
