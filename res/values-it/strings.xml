@@ -42,7 +42,10 @@
   <string name="menu_delete">Cancellare</string>
   <string name="menu_edit">Modificare</string>
   <string name="menu_help">Aiuto</string>
+  <string name="menu_pick">Scegli un file da caricare</string>
   <string name="no_uris">No URI definito.</string>
+  <string name="no_app_handling_pick_available">Nessuna applicazione disponibile per scegliere un file.
+  	Installare <i>OI File Manager</i> da Google Play?</string>
   <string name="select_ftp_target">Selezionare una destinazione FTP per l\'upload</string>
   <string name="manage_ftp_targets">Gestire le destinazioni FTP</string>
   
