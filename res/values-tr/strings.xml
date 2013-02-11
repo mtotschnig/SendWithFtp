@@ -19,6 +19,7 @@
 ]>
 <resources>
   <string name="app_name">&app_name;</string>
+  <string name="error_accessing_gplay">Google Play erişimi sırasında hata oluştu</string>
   <string name="ftp_uri_malformed">Yanlış yapılandırılmış URI</string>
   <string name="ftp_success">%1$s konumuna yükleme başarılı oldu</string>
   <string name="ftp_failure">%1$s konumuna yüklenirken hata oluştu: %2$s</string>

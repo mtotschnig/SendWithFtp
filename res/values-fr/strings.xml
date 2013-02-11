@@ -19,6 +19,7 @@
 ]>
 <resources>
   <string name="app_name">&app_name;</string>
+  <string name="error_accessing_gplay">Erreur lors de l\'accès à Google Play</string>
   <string name="ftp_uri_malformed">Mauvaise syntaxe de l\'URI</string>
   <string name="ftp_success">Téléchargement vers %1$s réussi</string>
   <string name="ftp_failure">Echec du téléchargement vers %1$s</string>

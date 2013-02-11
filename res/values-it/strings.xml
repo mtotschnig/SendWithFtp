@@ -19,6 +19,7 @@
 ]>
 <resources>
   <string name="app_name">&app_name;</string>
+  <string name="error_accessing_gplay">Errore durante l\'accesso a Google Play</string>
   <string name="ftp_uri_malformed">Sintassi male dell\'URI</string>
   <string name="ftp_success">Carica su %1$s è riuscita</string>
   <string name="ftp_failure">Carica su %1$s faillita</string>

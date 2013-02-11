@@ -19,6 +19,7 @@
 ]>
 <resources>
   <string name="app_name">&app_name;</string>
+  <string name="error_accessing_gplay">Fehler beim Zugriff auf Google Play</string>
   <string name="ftp_uri_malformed">Ungültige URI</string>
   <string name="ftp_success">Übertragung nach %1$s erfolgreich</string>
   <string name="ftp_failure">Übertragung nach %1$s gescheitert</string>
@@ -33,7 +34,20 @@
   <string name="ftp_connection_refused">Verbindung mit %1$s verweigert</string>
   <string name="ftp_connection_failure">Verbindung mit %1$s gescheitert</string>
   <string name="ftp_cancelled">FTP Übertragung nach %1$s abgebrochen</string>
+  <string name="ftp_fileExists_failure">Datei existiert bereits am Ziel</string>
+    <string name="help_intro">Wenn Sie <i>&app_name;</i> über das App Icon starten, verwalten Sie eine Liste von
+    FTP URIs. Sie können:\n\n
+    - <b>URI hinzufügen</b> : Schreiben Sie diese in das Textfeld am unteren Rand des Bildschirms und klicken Sie auf <b>Hinzufügen</b>\n
+    - <b>URI verändern</b> : Wählen Sie <b>Verändern</b> über das Kontextmenü eines Eintrags. Das Textfeld unten wird mit dem Inhalt befüllt,
+    und Sie können diesen bearbeiten, bevor Sie die Veränderungen mit dem  <b>Verändern</b> Schaltknopf bestätigen.\n
+    - <b>URI löschen</b> : Wählen Sie <b>Löschen</b> über das Kontextmenü eines Eintrags.\n
+    \nAus dieser Liste wählen Sie eine URI aus, wenn Sie <i>&app_name;</i> für das Teilen von Inhalten auswählen.
+    Bevor Sie ein Ziel auswählen (durch Klick auf den Eintrag in der Liste), können sie noch 
+    Einträge hinzufügen, verändern, löschen, wie oben beschrieben..
+  </string>
   <string name="help_heading_whats_new">Neue Funktionen</string>
+  <string name="help_heading_license">Lizenz</string>
+  <string name="help_heading_usage">Verwendung</string>
   <string name="help_whats_new">&#160;- Türkische Übersetzung.\n
     - Beispiel URI als Hinweis anzeigen.</string>
   <string name="button_add">Hinzufügen</string>
@@ -41,8 +55,9 @@
   <string name="menu_delete">Löschen</string>
   <string name="menu_edit">Verändern</string>
   <string name="menu_help">Hilfe</string>
+  <string name="menu_pick">Datei zum Hochladen auswählen</string>
   <string name="no_uris">Keine URIs vorhanden.</string>
   <string name="select_ftp_target">FTP Ziel für Upload auswählen.</string>
   <string name="manage_ftp_targets">FTP Ziele verwalten</string>
-  
+  <string name="no_app_handling_ftp_available">Keine App zum Datei auswählen gefunden. <i>OI File Manager</i> von Google Play installieren?</string>
 </resources>

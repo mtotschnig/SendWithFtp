@@ -35,20 +35,21 @@
   <string name="ftp_connection_failure">Connection to %1$s failed</string>
   <string name="ftp_cancelled">FTP Transfer to %1$s cancelled</string>
   <string name="ftp_fileExists_failure">File already exists at target</string>
-  <string name="help_intro">When you launch Send With FTP through its app icon, you manage a list of
-		FTP URIs. You can:\n
-		\n - <b>Add a URI</b> : Simply enter it into the text field at the bottom of the screen and click on <b>Add</b>
-		\n - <b>Edit a URI</b> : Select <b>Edit</b> from an entry\'s context menu. The text field at the bottom gets filled with 
-		its content, and you can edit it, and commit your change through the <b>Change</b> button.
-		\n - <b>Delete a URI</b> : Select <b>Delete</b> from an entry\'s context menu.\n
-		\nIt is from this list that you can select a target URI when you choose Send With FTP
+  <string name="help_intro">When you launch <i>&app_name;</i> through its app icon, you manage a list of
+		FTP URIs. You can:\n\n
+	  - <b>Add a URI</b> : Simply enter it into the text field at the bottom of the screen and click on <b>Add</b>\n
+	  - <b>Edit a URI</b> : Select <b>Edit</b> from an entry\'s context menu. The text field at the bottom gets filled with 
+		its content, and you can edit it, and commit your change through the <b>Change</b> button.\n
+		- <b>Delete a URI</b> : Select <b>Delete</b> from an entry\'s context menu.\n
+		\nIt is from this list that you can select a target URI when you choose <i>&app_name;</i>
 		for sharing content. Before selecting a target (by clicking on its entry in the list), you can still add, edit, delete entries,
 		as explained above.
   </string>
   <string name="help_heading_whats_new">What\'s new</string>
+  <string name="help_heading_license">License</string>
   <string name="help_heading_usage">Usage</string>
-  <string name="help_whats_new">&#160;- Turkish translation.\n
-    - Show example URI as hint.</string>
+  <string name="help_whats_new">&#160;- Allow picking a file for upload.\n
+    - Completed UI translation.</string>
   <string name="button_add">Add</string>
   <string name="button_change">Change</string>
   <string name="button_website">Website</string>
@@ -56,14 +57,13 @@
   <string name="menu_edit">Edit</string>
   <string name="menu_help">Help</string>
   <string name="menu_info">Info</string>
-  <string name="menu_pick">Pick a file</string>
+  <string name="menu_pick">Pick a file for upload</string>
   <string name="no_uris">No URIs defined.</string>
   <string name="no_app_handling_pick_available">No app for picking files available. Install <i>OI File Manager</i> from Google Play?</string>
   <string name="select_ftp_target">Select an FTP target for the upload</string>
   <string name="manage_ftp_targets">Manage your FTP targets</string>
   <!-- strings below this comment do not need translations -->
   <string name="help_enjoy"><u>Enjoy!</u></string>
-  <string name="help_heading_license">License</string>
   <string name="help_licence_gpl">GNU General Public License version 3
     \nhttp://www.gnu.org/licenses/gpl.html .</string>
 </resources>
