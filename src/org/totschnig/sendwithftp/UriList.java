@@ -245,16 +245,12 @@ public class UriList extends ListActivity {
     if (requestCode == ACTIVITY_TRANSFER)
       finish();
     else if (requestCode == ACTIVITY_PICK && intent != null) {
-      String filename = intent.getDataString();
-      if (filename != null) {
-        // Get rid of URI prefix:
-        if (filename.startsWith("file://")) {
-          filename = filename.substring(7);
-        }
+      String uri = intent.getDataString();
+      if (uri != null) {
         Intent i = new Intent(this, FtpTransfer.class);
         String target = mSelectedUri;
         i.setData(android.net.Uri.parse(target));
-        i.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(filename)));
+        i.putExtra(Intent.EXTRA_STREAM, Uri.parse(uri));
         startActivity(i);
       }
     }
