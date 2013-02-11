@@ -231,7 +231,7 @@ public class UriList extends ListActivity {
     super.onActivityResult(requestCode, resultCode, intent);
     if (requestCode == ACTIVITY_TRANSFER)
       finish();
-    else if (requestCode == ACTIVITY_PICK) {
+    else if (requestCode == ACTIVITY_PICK && intent != null) {
       String filename = intent.getDataString();
       if (filename != null) {
         // Get rid of URI prefix:
