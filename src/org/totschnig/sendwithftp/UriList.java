@@ -19,6 +19,7 @@ import java.io.File;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -47,6 +48,7 @@ public class UriList extends ListActivity {
   private static final int EDIT_COMMAND_ID = 4;
   private static final int PICK_COMMAND_ID = 5;
   private static final int INFO_DIALOG_ID = 0;
+  private static final int MARKET_DIALOG_ID = 1;
   private static final int ACTIVITY_TRANSFER = 0;
   private static final int ACTIVITY_PICK = 1;
   private UriDataSource datasource;
@@ -151,7 +153,11 @@ public class UriList extends ListActivity {
       mUriCursor.moveToPosition(info.position);
       mSelectedUri = mUriCursor.getString(1);
       Intent intent = new Intent("org.openintents.action.PICK_FILE");
-      startActivityForResult(intent, ACTIVITY_PICK);
+      try {
+        startActivityForResult(intent, ACTIVITY_PICK);
+      } catch (ActivityNotFoundException e) {
+        showDialog(MARKET_DIALOG_ID);
+      }
       return true;
     }
       
@@ -202,14 +208,6 @@ public class UriList extends ListActivity {
       view = li.inflate(R.layout.aboutview, null);
       ((TextView)view.findViewById(R.id.aboutVersionCode)).setText(getVersionInfo());
 
-      /*      
-      String imId = Settings.Secure.getString(
-          getContentResolver(), 
-          Settings.Secure.DEFAULT_INPUT_METHOD
-       );
-      ((TextView)view.findViewById(R.id.debug)).setText(imId);
-      */
-
       return new AlertDialog.Builder(this)
         .setTitle(getResources().getString(R.string.app_name) + " " + getResources().getString(R.string.menu_help))
         .setIcon(R.drawable.share)
@@ -220,10 +218,25 @@ public class UriList extends ListActivity {
           }
         })
         .setNegativeButton(android.R.string.ok, null).create();
+    case MARKET_DIALOG_ID:
+      return new AlertDialog.Builder(this)
+      .setMessage(R.string.no_app_handling_pick_available)
+      .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+             Intent intent = new Intent(Intent.ACTION_VIEW);
+             intent.setData(Uri.parse("market://details?id=org.openintents.filemanager"));
+               try {
+                startActivity(intent);
+              } catch (ActivityNotFoundException e) {
+                // TODO Auto-generated catch block
+                Toast.makeText(getBaseContext(),R.string.error_accessing_gplay, Toast.LENGTH_LONG).show();
+              }
+           }
+        })
+      .setNegativeButton(android.R.string.no, null).create();
     }
     return null;
   }
-  
 
   @Override
   protected void onActivityResult(int requestCode, int resultCode, 

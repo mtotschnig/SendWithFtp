@@ -19,6 +19,7 @@
 ]>
 <resources>
   <string name="app_name">&app_name;</string>
+  <string name="error_accessing_gplay">Error while accessing Google Play</string>
   <string name="ftp_uri_malformed">Malformed URI</string>
   <string name="ftp_success">Upload to %1$s successful</string>
   <string name="ftp_failure">Failure while uploading to %1$s: %2$s</string>
@@ -57,6 +58,7 @@
   <string name="menu_info">Info</string>
   <string name="menu_pick">Pick a file</string>
   <string name="no_uris">No URIs defined.</string>
+  <string name="no_app_handling_pick_available">No app for picking files available. Install <i>OI File Manager</i> from Google Play?</string>
   <string name="select_ftp_target">Select an FTP target for the upload</string>
   <string name="manage_ftp_targets">Manage your FTP targets</string>
   <!-- strings below this comment do not need translations -->
