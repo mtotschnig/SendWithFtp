@@ -36,14 +36,16 @@
   <string name="ftp_cancelled">FTP Transfer to %1$s cancelled</string>
   <string name="ftp_fileExists_failure">File already exists at target</string>
   <string name="help_intro">When you launch <i>&app_name;</i> through its app icon, you manage a list of
-		FTP URIs. You can:\n\n
-	  - <b>Add a URI</b> : Simply enter it into the text field at the bottom of the screen and click on <b>Add</b>\n
-	  - <b>Edit a URI</b> : Select <b>Edit</b> from an entry\'s context menu. The text field at the bottom gets filled with 
-		its content, and you can edit it, and commit your change through the <b>Change</b> button.\n
-		- <b>Delete a URI</b> : Select <b>Delete</b> from an entry\'s context menu.\n
-		\nIt is from this list that you can select a target URI when you choose <i>&app_name;</i>
-		for sharing content. Before selecting a target (by clicking on its entry in the list), you can still add, edit, delete entries,
-		as explained above.
+    FTP URIs.\n
+    - <b>Add</b> : Simply enter an URI into the text field at the bottom of the screen.\n
+    The following actions can be called upon each URI through its context menu:\n
+    - <b>Edit</b> : The text field at the bottom gets filled, and you can edit the URI, and commit your change through the <b>Change</b> button.\n
+    - <b>Delete</b> : The entry will be removed from the list.\n
+    - <b>Pick a file for upload</b> : You need to install <i>OI File Manager</i>. You can select a file that will be
+      uploaded to the target URI.\n
+    \nIt is from this list that you can select a target URI when you choose <i>&app_name;</i>
+    for sharing content. Before selecting a target (by clicking on its entry in the list), you can still add, edit, delete entries,
+    as explained above.
   </string>
   <string name="help_heading_whats_new">What\'s new</string>
   <string name="help_heading_license">License</string>
@@ -58,6 +60,7 @@
   <string name="menu_help">Help</string>
   <string name="menu_info">Info</string>
   <string name="menu_pick">Pick a file for upload</string>
+  <string name="new_version">New version</string>
   <string name="no_uris">No URIs defined.</string>
   <string name="no_app_handling_pick_available">No app for picking files available. Install <i>OI File Manager</i> from Google Play?</string>
   <string name="select_ftp_target">Select an FTP target for the upload</string>

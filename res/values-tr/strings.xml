@@ -33,17 +33,18 @@
   <string name="ftp_connection_failure">%1$s konumu ile bağlantı başarısız oldu</string>
   <string name="ftp_cancelled">%1$s konumuna FTP transferi iptal edildi</string>
   <string name="ftp_fileExists_failure">Hedefte dosya zaten mevcut</string>
-  <string name="help_intro">&app_name; uygulama ikonu ile başlatıldığında bir FTP URI listesi yönetirsiniz. Yapabilecekleriniz şunlardır:\n
-		\n - <b>URI ilâve et</b> : Ekranın alt kısmındaki metin alanına girip <b>İlâve Et</b> düğmesine dokunun.
+  <string name="help_intro"><i>&app_name;</i> uygulama ikonu ile başlatıldığında bir FTP URI listesi yönetirsiniz.\n
+		\n - <b>Ilâve et</b> : Ekranın alt kısmındaki metin alanına girip.
 		\n - <b>URI düzenle</b> : Bir unsurun bağlam menüsünden <b>Düzenle</b>\'yi seçin. Alttaki metin alanı içeriği ile doldurulacaktır 
 		ki bu, içeriği düzenleyip değişikliği <b>Değiştir</b> düğmesi ile teyit etmenize imkân verir.
 		\n - <b>URI sil</b> : Bir unsurun bağlam menüsünden <b>Sil</b> seçeneğini seçin.\n
-		\nİçerik paylaşmak için &app_name; seçildiğinde hedef URI\'yi bu listeden seçebilirsiniz. Bir hedef seçmeden önce (listede ona dokunarak), yukarıda açıklandığı gibi unsur eklemek, düzenlemek ve silmek mümkündür.
+		\nİçerik paylaşmak için <i>&app_name;</i> seçildiğinde hedef URI\'yi bu listeden seçebilirsiniz.
+		Bir hedef seçmeden önce (listede ona dokunarak), yukarıda açıklandığı gibi unsur eklemek, düzenlemek ve silmek mümkündür.
   </string>
   <string name="help_heading_whats_new">Yenilikler</string>
   <string name="help_heading_usage">Kullanım</string>
-  <string name="help_whats_new">&#160;- Türkçe tercüme.\n
-    - Örnek bir URI\'yi ipucu olarak göster.</string>
+ <string name="help_whats_new">&#160;- Aktarmak için dosya seçimine imkân tanı.\n
+    - Kullanıcı arayüzü tercümesi tamamlandı.</string>
   <string name="button_add">İlâve et</string>
   <string name="button_change">Değiştir</string>
   <string name="button_website">Ağ sitesi</string>
@@ -51,7 +52,11 @@
   <string name="menu_edit">Düzenle</string>
   <string name="menu_help">Yardım</string>
   <string name="menu_info">Malumat</string>
+  <string name="menu_pick">Aktarmak için bir dosya seç</string>
   <string name="no_uris">Hiçbir URI belirtilmemiş.</string>
+  <string name="new_version">Yeni sürüm</string>
+  <string name="no_app_handling_pick_available">Dosya seçmek için hiçbir uygulama mevcut değil.
+    <i>OI File Manager</i> Google Play\'den indirilsin mi?</string>
   <string name="select_ftp_target">Yükleme için bir FTP hedefi seçin</string>
   <string name="manage_ftp_targets">FTP hedeflerini yönet</string>
   <string name="help_enjoy"><u>İyi kullanımlar!</u></string>

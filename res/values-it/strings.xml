@@ -34,9 +34,10 @@
   <string name="ftp_connection_failure">Collegamento a %1$s faillito</string>
   <string name="ftp_cancelled">Trasferimento FTP a %1$s cancellato</string>
   <string name="ftp_uploading_wait">Scarica in corso. Attendere prego &#8230;</string>
+  <string name="ftp_fileExists_failure">Il file esiste già a destinazione</string>
   <string name="help_heading_whats_new">Novità</string>
-  <string name="help_whats_new">&#160;- Traduzione in turco.\n
-     - Esempio di URI come suggerimento</string>
+  <string name="help_whats_new">&#160;- Lasciare scegliere un file da caricare.\n
+     - Completato traduzione dell\'interfaccia utente.</string>
   <string name="button_add">Aggiungere</string>
   <string name="button_change">Cambiare</string>
   <string name="menu_delete">Cancellare</string>
@@ -44,6 +45,7 @@
   <string name="menu_help">Aiuto</string>
   <string name="menu_pick">Scegli un file da caricare</string>
   <string name="no_uris">No URI definito.</string>
+  <string name="new_version">New version</string>
   <string name="no_app_handling_pick_available">Nessuna applicazione disponibile per scegliere un file.
   	Installare <i>OI File Manager</i> da Google Play?</string>
   <string name="select_ftp_target">Selezionare una destinazione FTP per l\'upload</string>
