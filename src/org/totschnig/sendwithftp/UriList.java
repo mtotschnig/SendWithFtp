@@ -14,18 +14,19 @@
 */
 package org.totschnig.sendwithftp;
 
-import java.io.File;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -49,6 +50,7 @@ public class UriList extends ListActivity {
   private static final int PICK_COMMAND_ID = 5;
   private static final int INFO_DIALOG_ID = 0;
   private static final int MARKET_DIALOG_ID = 1;
+  private static final int VERSION_DIALOG_ID = 2;
   private static final int ACTIVITY_TRANSFER = 0;
   private static final int ACTIVITY_PICK = 1;
   private UriDataSource datasource;
@@ -87,6 +89,7 @@ public class UriList extends ListActivity {
     datasource.open();
     mUriCursor = datasource.getAllUris();
     startManagingCursor(mUriCursor);
+    newVersionCheck();
     // Create an array to specify the fields we want to display in the list
     String[] from = new String[]{SQLiteHelper.COLUMN_URI};
 
@@ -107,6 +110,21 @@ public class UriList extends ListActivity {
     });
     registerForContextMenu(getListView());
   }
+  public void newVersionCheck() {
+    SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+    Editor edit = pref.edit();
+    int prev_version = pref.getInt("current_version", -1);
+    int current_version = getVersionNumber();
+    if (prev_version == current_version)
+      return;
+    edit.putInt("current_version", current_version).commit();
+    if (prev_version == -1) {
+      showDialog(INFO_DIALOG_ID);
+    } else if (prev_version != current_version) {
+      showDialog(VERSION_DIALOG_ID);
+    }
+  }
+  
   protected void createOrUpdateUri(String uri) {
     boolean success;
     if (mEditedRow != 0L) {
@@ -234,6 +252,18 @@ public class UriList extends ListActivity {
            }
         })
       .setNegativeButton(android.R.string.no, null).create();
+    case VERSION_DIALOG_ID:
+      return new AlertDialog.Builder(this)
+      .setTitle(getString(R.string.new_version) + " : " + getVersionName())
+      .setIcon(R.drawable.share)
+      .setMessage(R.string.help_whats_new)
+      .setPositiveButton(R.string.menu_info,new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+             showDialog(INFO_DIALOG_ID);
+           }
+        })
+      .setNegativeButton(android.R.string.ok,null)
+      .create();
     }
     return null;
   }
@@ -301,5 +331,31 @@ public class UriList extends ListActivity {
       Log.e("SendWithFtp", "Package info not found", e);
     }
     return versionname + version;
+  }
+  /**
+   * @return version number (versionCode)
+   */
+  public int getVersionNumber() {
+    int version = -1;
+    try {
+      PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
+      version = pi.versionCode;
+    } catch (Exception e) {
+      Log.e("SendWithFtp", "Package name not found", e);
+    }
+    return version;
+  }
+  /**
+   * @return version name
+   */
+  public String getVersionName() {
+    String version = "";
+    try {
+      PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
+      version = pi.versionName;
+    } catch (Exception e) {
+      Log.e("SendWithFtp", "Package name not found", e);
+    }
+    return version;
   }
 }
