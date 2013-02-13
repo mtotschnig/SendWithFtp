@@ -34,16 +34,16 @@
   <string name="ftp_cancelled">%1$s konumuna FTP transferi iptal edildi</string>
   <string name="ftp_fileExists_failure">Hedefte dosya zaten mevcut</string>
   <string name="help_intro"><i>&app_name;</i> uygulama ikonu ile başlatıldığında bir FTP URI listesi yönetirsiniz.\n
-		\n - <b>Ilâve et</b> : Ekranın alt kısmındaki metin alanına girip.
-		\n - <b>URI düzenle</b> : Bir unsurun bağlam menüsünden <b>Düzenle</b>\'yi seçin. Alttaki metin alanı içeriği ile doldurulacaktır 
-		ki bu, içeriği düzenleyip değişikliği <b>Değiştir</b> düğmesi ile teyit etmenize imkân verir.
-		\n - <b>URI sil</b> : Bir unsurun bağlam menüsünden <b>Sil</b> seçeneğini seçin.\n
-		\nİçerik paylaşmak için <i>&app_name;</i> seçildiğinde hedef URI\'yi bu listeden seçebilirsiniz.
-		Bir hedef seçmeden önce (listede ona dokunarak), yukarıda açıklandığı gibi unsur eklemek, düzenlemek ve silmek mümkündür.
+    \n - <b>İlâve et</b> : Ekranın alt kısmındaki metin alanına bir URI (adres) girip <b>İlâve Et</b> düğmesine dokunun.
+    \n - <b>Düzenle</b> : Bir unsurun bağlam menüsünden <b>Düzenle</b>\'yi seçin. Alttaki metin alanı içeriği ile doldurulacaktır
+    ki bu, içeriği düzenleyip değişikliği <b>Değiştir</b> düğmesi ile teyit etmenize imkân verir.
+    \n - <b>Sil</b> : Unsur listeden kaldırılacaktır.\n
+    \n <b>Aktarılacak dosya seç</b> :<i>OI File Manager</i> (dosya yöneticisini) kurmanız gerekir. Hedef URI\'ye yüklenecek dosyayı seçmenize imkân verir.\n
+    \n İçerik paylaşmak istediğinizde <i>&app_name;</i> uygulamasını seçtiğinizde hedef URI\'yi bu listeden seçebilirsiniz. Bir hedef seçmeden önce (listede ona dokunarak) unsurları yukarıda açıklandığı gibi ekleyebilir, düzenleyebilir, ve silebilirsiniz.
   </string>
   <string name="help_heading_whats_new">Yenilikler</string>
   <string name="help_heading_usage">Kullanım</string>
- <string name="help_whats_new">&#160;- Aktarmak için dosya seçimine imkân tanı.\n
+  <string name="help_whats_new">&#160;- Aktarmak için dosya seçimine imkân tanı.\n
     - Kullanıcı arayüzü tercümesi tamamlandı.</string>
   <string name="button_add">İlâve et</string>
   <string name="button_change">Değiştir</string>
