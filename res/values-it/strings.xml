@@ -36,8 +36,7 @@
   <string name="ftp_uploading_wait">Scarica in corso. Attendere prego &#8230;</string>
   <string name="ftp_fileExists_failure">Il file esiste già a destinazione</string>
   <string name="help_heading_whats_new">Novità</string>
-  <string name="help_whats_new">&#160;- Lasciare scegliere un file da caricare.\n
-     - Completato traduzione dell\'interfaccia utente.</string>
+  <string name="help_whats_new">&#160;- Lasciare scegliere un file da caricare.</string>
   <string name="button_add">Aggiungere</string>
   <string name="button_change">Cambiare</string>
   <string name="menu_delete">Cancellare</string>

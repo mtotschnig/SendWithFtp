@@ -37,8 +37,7 @@
   <string name="ftp_cancelled">Transferencia FTP a %1$s abortada</string>
   <string name="ftp_fileExists_failure">El archivo ya existe en el destino</string>
   <string name="help_heading_whats_new">Novedades</string>
-  <string name="help_whats_new">&#160;- Permitir elegir un archivo para cargar.\n
-     - Completado traducción de la interfaz de usuario</string>
+  <string name="help_whats_new">&#160;- Permitir elegir un archivo para cargar.</string>
   <string name="button_add">Añadir</string>
   <string name="button_change">Cambiar</string>
   <string name="menu_delete">Borrar</string>
