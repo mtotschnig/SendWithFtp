@@ -55,8 +55,8 @@ public class UriDataSource {
       return false;
     }
     String scheme = uri.getScheme();
-    if (scheme == null || !scheme.equals("ftp")) {
-      Toast.makeText(context, "Only FTP URIs are handled" + 
+    if (scheme == null || !(scheme.equals("ftp") || scheme.equals("ftps"))) {
+      Toast.makeText(context, "Only FTP(s) URIs are handled" +
           (scheme == null ? "" : " , not " + scheme), Toast.LENGTH_SHORT).show();
       return false;
     }

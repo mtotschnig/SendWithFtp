@@ -28,6 +28,7 @@ import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPConnectionClosedException;
 import org.apache.commons.net.ftp.FTPReply;
+import org.apache.commons.net.ftp.FTPSClient;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -228,7 +229,12 @@ public class FtpTransfer extends Activity {
         //String ftpTarget = "ftp://michael:foo@10.0.0.2/";
         //bad directory:
         //String ftpTarget = "ftp://michael:foo@10.0.0.2/foobar/";
-        FTPClient mFTP = new FTPClient();
+        FTPClient mFTP;
+        if (target.getScheme().equals("ftps")) {
+          mFTP = new FTPSClient(false);
+          ((FTPSClient) mFTP).setTrustManager(null);
+        } else
+          mFTP = new FTPClient();
         String host = target.getHost();
         if (host == null)
           setResult(new Result(false,R.string.ftp_uri_malformed));
@@ -293,12 +299,16 @@ public class FtpTransfer extends Activity {
               setResult(new Result(false, R.string.ftp_failure,mFTP.getReplyString()));
             }
         } catch (ConnectException e) {
+          Log.d("DEBUG",e.getClass().getName()+" "+e.getMessage());
           setResult(new Result(false, R.string.ftp_connection_refused));
         } catch (SocketException e) {
+          Log.d("DEBUG",e.getClass().getName()+" "+e.getMessage());
           setResult(new Result(false, R.string.ftp_socket_exception));
         } catch (FTPConnectionClosedException e) {
+          Log.d("DEBUG",e.getClass().getName()+" "+e.getMessage());
           setResult(new Result(false, R.string.ftp_connection_refused));
         } catch (IOException e) {
+          Log.d("DEBUG",e.getClass().getName()+" "+e.getMessage());
           setResult(new Result(false,R.string.ftp_io_exception));
         }  finally {
           if(mFTP.isConnected()) {
