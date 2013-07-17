@@ -35,8 +35,8 @@
   <string name="ftp_connection_failure">Echec de la connexion avec %1$s</string>
   <string name="ftp_cancelled">Téléchargement FTP vers %1$s annulé</string>
   <string name="ftp_fileExists_failure">Le fichier existe déjà à la cible</string>
-  <string name="help_intro">Quand vous lancez <i>&app_name;</i> par son icone, vous gerez une liste d\'URI FTP.\n\n
-    - <b>Ajouter</b> : Saississez-la dans le champ texte en bas de l\'écran.\n
+  <string name="help_intro">Quand vous lancez <i>&app_name;</i> par son icone, vous gerez une liste d\'URI FTP(s).\n\n
+    - <b>Ajouter</b> : Saississez la URI (ftp ou ftps) dans le champ texte en bas de l\'écran.\n
     - <b>Éditer</b> : L\'URI remplira le champ texte et vous pouvez l\'éditer,
     et confirmer les changements par le bouton <b>Modifier</b>.\n
     - <b>Effacer</b> : L\'URI sera supprimée de la liste.\n
@@ -46,8 +46,7 @@
   </string>
   <string name="help_heading_whats_new">Nouveautés</string>
   <string name="help_heading_usage">Utilisation</string>
-  <string name="help_whats_new">&#160;- Directement choissir un fichier pour téléchargement.\n
-    - Traduction de l\'interface usager complétée.</string>
+  <!--   <string name="help_whats_new">&#160;- </string> -->
   <string name="button_add">Ajouter</string>
   <string name="button_change">Modifier</string>
   <string name="button_website">Site web</string>

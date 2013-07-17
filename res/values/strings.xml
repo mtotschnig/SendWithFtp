@@ -36,8 +36,8 @@
   <string name="ftp_cancelled">FTP Transfer to %1$s cancelled</string>
   <string name="ftp_fileExists_failure">File already exists at target</string>
   <string name="help_intro">When you launch <i>&app_name;</i> through its app icon, you manage a list of
-    FTP URIs.\n
-    - <b>Add</b> : Simply enter an URI into the text field at the bottom of the screen.\n
+    FTP(s) URIs.\n
+    - <b>Add</b> : Simply enter an URI (ftp or ftps) into the text field at the bottom of the screen.\n
     The following actions can be called upon each URI through its context menu:\n
     - <b>Edit</b> : The text field at the bottom gets filled, and you can edit the URI, and commit your change through the <b>Change</b> button.\n
     - <b>Delete</b> : The entry will be removed from the list.\n
@@ -50,8 +50,7 @@
   <string name="help_heading_whats_new">What\'s new</string>
   <string name="help_heading_license">License</string>
   <string name="help_heading_usage">Usage</string>
-  <string name="help_whats_new">&#160;- Allow picking a file for upload.\n
-    - Completed UI translation.</string>
+  <string name="help_whats_new">&#160;- Explicit ftps.</string>
   <string name="button_add">Add</string>
   <string name="button_change">Change</string>
   <string name="button_website">Website</string>

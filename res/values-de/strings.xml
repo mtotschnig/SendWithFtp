@@ -36,8 +36,8 @@
   <string name="ftp_cancelled">FTP Übertragung nach %1$s abgebrochen</string>
   <string name="ftp_fileExists_failure">Datei existiert bereits am Ziel</string>
     <string name="help_intro">Wenn Sie <i>&app_name;</i> über das App Icon starten, verwalten Sie eine Liste von
-    FTP URIs.\n
-    - <b>Hinzufügen</b> : Schreiben Sie diese in das Textfeld am unteren Rand des Bildschirms.\n
+    FTP(s) URIs.\n
+    - <b>Hinzufügen</b> : Schreiben Sie eine URI (ftp oder ftps) in das Textfeld am unteren Rand des Bildschirms.\n
     Die folgenden Aktionen können über das Kontextmenü jedes Eintrages aufgerufen werden:\n
     - <b>Verändern</b> : Das Textfeld unten wird mit der URI befüllt,
     und Sie können diesen bearbeiten, bevor Sie die Veränderungen mit dem  <b>Verändern</b> Schaltknopf bestätigen.\n
@@ -51,8 +51,7 @@
   <string name="help_heading_whats_new">Neue Funktionen</string>
   <string name="help_heading_license">Lizenz</string>
   <string name="help_heading_usage">Verwendung</string>
-  <string name="help_whats_new">&#160;- Auswahl einer zu übertragenden Datei ermöglichen.\n
-    - Vervollständigung der Übersetzung der Benutzerschnittstelle.</string>
+<!--   <string name="help_whats_new">&#160;- </string> -->
   <string name="button_add">Hinzufügen</string>
   <string name="button_change">Verändern</string>
   <string name="menu_delete">Löschen</string>
