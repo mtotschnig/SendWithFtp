@@ -40,7 +40,7 @@
     - <b>Éditer</b> : L\'URI remplira le champ texte et vous pouvez l\'éditer,
     et confirmer les changements par le bouton <b>Modifier</b>.\n
     - <b>Effacer</b> : L\'URI sera supprimée de la liste.\n
-    \nC\'est dans cette liste que vous pouvez choisir une URI cible quand vous choississez <i>&app_name;</i>
+    \nC\'est dans cette liste que vous pouvez choisir une URI cible quand vous choisissez <i>&app_name;</i>
     pour partager du contenu. Avant de sélectionner une cible (en cliquant sur une entrée dans la liste),
     vous pouvez toujours ajouter, éditer, effacer des entrées comme expliqué ci-dessus.
   </string>
