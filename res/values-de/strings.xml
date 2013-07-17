@@ -38,15 +38,15 @@
     <string name="help_intro">Wenn Sie <i>&app_name;</i> über das App Icon starten, verwalten Sie eine Liste von
     FTP URIs.\n
     - <b>Hinzufügen</b> : Schreiben Sie diese in das Textfeld am unteren Rand des Bildschirms.\n
-    Die folgenden Aktionen können über das Kontextmenü jedes Eintrages aufgerufen werden:
+    Die folgenden Aktionen können über das Kontextmenü jedes Eintrages aufgerufen werden:\n
     - <b>Verändern</b> : Das Textfeld unten wird mit der URI befüllt,
     und Sie können diesen bearbeiten, bevor Sie die Veränderungen mit dem  <b>Verändern</b> Schaltknopf bestätigen.\n
     - <b>Löschen</b> : Der Eintrag wird aus der Liste entfernt.\n
     - <b>Datei zum Hochladen auswählen</b> : Sie müssen <i>OI File Manager</i> installieren. Sie wählen eine Datei aus,
-    die an die Ziel URI übertragen werden.\n
+    die an die Ziel URI übertragen wird.\n
     \nAus dieser Liste wählen Sie eine URI aus, wenn Sie <i>&app_name;</i> für das Teilen von Inhalten auswählen.
     Bevor Sie ein Ziel auswählen (durch Klick auf den Eintrag in der Liste), können sie noch 
-    Einträge hinzufügen, verändern, löschen, wie oben beschrieben..
+    Einträge hinzufügen, verändern, löschen, wie oben beschrieben.
   </string>
   <string name="help_heading_whats_new">Neue Funktionen</string>
   <string name="help_heading_license">Lizenz</string>
