@@ -50,6 +50,8 @@ public class UriDataSource {
     URI uri;
     try {
       uri = new URI(target);
+      if (uri.getHost() ==null)
+        throw new URISyntaxException(target,"No host found");
     } catch (URISyntaxException e1) {
       Toast.makeText(context, R.string.ftp_uri_malformed, Toast.LENGTH_SHORT).show();
       return false;
