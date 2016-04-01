@@ -23,6 +23,7 @@ import java.io.StringBufferInputStream;
 import java.net.ConnectException;
 import java.net.SocketException;
 import java.net.URI;
+import java.util.List;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -39,8 +40,10 @@ import android.content.DialogInterface.OnCancelListener;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -53,7 +56,7 @@ public class FtpTransfer extends Activity {
   InputStream is;
   String fileName;
   int fileType = FTP.BINARY_FILE_TYPE;
-  
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -95,7 +98,7 @@ public class FtpTransfer extends Activity {
     }
   }
   private void handleSendVcard(Intent intent) {
-    Uri uri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+    Uri uri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
     if (uri != null) {
       ContentResolver cr = getContentResolver();
       try {
@@ -113,9 +116,9 @@ public class FtpTransfer extends Activity {
     }
   }
   private void handleFallBack(Intent intent) {
-    Uri uri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+    Uri uri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
     if (uri != null) {
-      File source = new File (uri.getPath());
+      File source = new File(uri.getPath());
       if (source.exists()) {
         fileName = source.getName();
         try {
@@ -125,7 +128,16 @@ public class FtpTransfer extends Activity {
         }
       }
     }
+    if (is == null) {
+      try {
+        is = getContentResolver().openInputStream(uri);
+        fileName = getDisplayName(uri);
+      } catch (FileNotFoundException e) {
+        e.printStackTrace();
+      }
+    }
   }
+
   private void handleSendText(Intent intent) {
     String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
     if (sharedText != null) {
@@ -146,7 +158,7 @@ public class FtpTransfer extends Activity {
       } catch (FileNotFoundException e) {
         e.printStackTrace();
       }
-    } 
+    }
   }
   private void showProgressDialog() {
     mProgressDialog = ProgressDialog.show(this, "",
@@ -174,7 +186,7 @@ public class FtpTransfer extends Activity {
     }
     return selectedImagePath;
   }
-  
+
   void markAsDone() {
     String ftp_result;
     mProgressDialog.dismiss();
@@ -182,7 +194,7 @@ public class FtpTransfer extends Activity {
       ftp_result = getString(R.string.ftp_cancelled,target.getHost());
     } else {
       Result result = task.getResult();
-      if (result.message == R.string.ftp_failure) 
+      if (result.message == R.string.ftp_failure)
         ftp_result = getString(result.message,target.getHost(),result.extra[0]);
       else
         ftp_result = getString(result.message,target.getHost());
@@ -212,7 +224,7 @@ public class FtpTransfer extends Activity {
       private int fileType;
       Result result;
       ProgressDialog mProgressDialog;
-      
+
       public FtpAsyncTask(FtpTransfer activity,InputStream is,Uri target2, String fileName,int fileType) {
         attach(activity);
         this.target = target2;
@@ -356,16 +368,16 @@ public class FtpTransfer extends Activity {
      * a string id from {@link R} for i18n and joining with an argument
      */
     public int message;
-    
+
     /**
      * optional argument to be passed to getString when resolving message id
      */
     public Object[] extra;
-    
+
     public Result(boolean success) {
       this.success = success;
     }
-   
+
     public Result(boolean success,int message) {
       this.success = success;
       this.message = message;
@@ -375,6 +387,48 @@ public class FtpTransfer extends Activity {
       this.success = success;
       this.message = message;
       this.extra = extra;
+    }
+  }
+
+  private String getDisplayName(Uri uri) {
+
+    if (!"file".equalsIgnoreCase(uri.getScheme()) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+      // The query, since it only applies to a single document, will only return
+      // one row. There's no need to filter, sort, or select fields, since we want
+      // all fields for one document.
+      try {
+        Cursor cursor = getContentResolver()
+            .query(uri, null, null, null, null, null);
+
+        if (cursor != null) {
+          try {
+            if (cursor.moveToFirst()) {
+              // Note it's called "Display Name".  This is
+              // provider-specific, and might not necessarily be the file name.
+              int columnIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+              if (columnIndex != -1) {
+                String displayName = cursor.getString(columnIndex);
+                if (displayName != null) {
+                  return displayName;
+                }
+              }
+            }
+          } catch (Exception e) {}
+          finally {
+            cursor.close();
+          }
+        }
+      } catch (SecurityException e) {
+        //this can happen if the user has restored a backup and
+        //we do not have a persistable permision
+        //return null;
+      }
+    }
+    List<String> filePathSegments = uri.getPathSegments();
+    if (filePathSegments.size()>0) {
+      return filePathSegments.get(filePathSegments.size()-1);
+    } else {
+      return "UNKNOWN";
     }
   }
 }
