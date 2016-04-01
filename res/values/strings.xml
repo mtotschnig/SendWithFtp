@@ -50,7 +50,7 @@
   <string name="help_heading_whats_new">What\'s new</string>
   <string name="help_heading_license">License</string>
   <string name="help_heading_usage">Usage</string>
-  <string name="help_whats_new">&#160;- READ_EXTERNAL_STORAGE required since Kitkat .</string>
+  <string name="help_whats_new">&#160;- Handle more types of shared data .</string>
   <string name="button_add">Add</string>
   <string name="button_change">Change</string>
   <string name="button_website">Website</string>
