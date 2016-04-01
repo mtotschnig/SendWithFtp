@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- 
   This file is part of Send With FTP.
   Send With FTP is free software: you can redistribute it and/or modify
@@ -52,6 +52,6 @@
         android:text="@string/button_add"
         style="@style/button"
         android:id="@+id/addOperation"
-        android:drawableLeft="@android:drawable/ic_menu_add" />
+        android:drawableLeft="@android:drawable/ic_menu_save" />
   </LinearLayout>
 </LinearLayout>
