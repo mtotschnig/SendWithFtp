@@ -1,0 +1,23 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 16
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "org.totschnig.sendwithftp"
+        minSdkVersion 7
+        targetSdkVersion 16
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+        }
+    }
+}
+
+dependencies {
+    compile files('libs/commons-net-ftp-3.0.1.jar')
+}
