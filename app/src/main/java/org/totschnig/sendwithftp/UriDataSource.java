@@ -32,7 +32,7 @@ public class UriDataSource {
   private String[] allColumns = { SQLiteHelper.COLUMN_ID,
       SQLiteHelper.COLUMN_URI };
   
-  Context context;
+  private Context context;
 
   public UriDataSource(Context context) {
     this.context = context;

@@ -50,12 +50,12 @@ import android.widget.Toast;
 
 
 public class FtpTransfer extends Activity {
-  ProgressDialog mProgressDialog;
+  private ProgressDialog mProgressDialog;
   private FtpAsyncTask task=null;
-  Uri target;
-  InputStream is;
-  String fileName;
-  int fileType = FTP.BINARY_FILE_TYPE;
+  private Uri target;
+  private InputStream is;
+  private String fileName;
+  private int fileType = FTP.BINARY_FILE_TYPE;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -222,8 +222,8 @@ public class FtpTransfer extends Activity {
       private String fileName;
       private InputStream is;
       private int fileType;
-      Result result;
-      ProgressDialog mProgressDialog;
+      private Result result;
+      private ProgressDialog mProgressDialog;
 
       public FtpAsyncTask(FtpTransfer activity,InputStream is,Uri target2, String fileName,int fileType) {
         attach(activity);
