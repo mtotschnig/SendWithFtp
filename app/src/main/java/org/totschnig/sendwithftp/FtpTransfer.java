@@ -50,6 +50,7 @@ import android.widget.Toast;
 
 
 public class FtpTransfer extends Activity {
+  private static final String DEBUG = "DEBUG";
   private ProgressDialog mProgressDialog;
   private FtpAsyncTask task=null;
   private Uri target;
@@ -311,16 +312,16 @@ public class FtpTransfer extends Activity {
               setResult(new Result(false, R.string.ftp_failure,mFTP.getReplyString()));
             }
         } catch (ConnectException e) {
-          Log.d("DEBUG",e.getClass().getName()+" "+e.getMessage());
+          Log.d(DEBUG,e.getClass().getName()+" "+e.getMessage());
           setResult(new Result(false, R.string.ftp_connection_refused));
         } catch (SocketException e) {
-          Log.d("DEBUG",e.getClass().getName()+" "+e.getMessage());
+          Log.d(DEBUG,e.getClass().getName()+" "+e.getMessage());
           setResult(new Result(false, R.string.ftp_socket_exception));
         } catch (FTPConnectionClosedException e) {
-          Log.d("DEBUG",e.getClass().getName()+" "+e.getMessage());
+          Log.d(DEBUG,e.getClass().getName()+" "+e.getMessage());
           setResult(new Result(false, R.string.ftp_connection_refused));
         } catch (IOException e) {
-          Log.d("DEBUG",e.getClass().getName()+" "+e.getMessage());
+          Log.d(DEBUG,e.getClass().getName()+" "+e.getMessage());
           setResult(new Result(false,R.string.ftp_io_exception));
         }  finally {
           if(mFTP.isConnected()) {
