@@ -28,8 +28,8 @@ public class UriDataSource {
 
   // Database fields
   private SQLiteDatabase database;
-  private SQLiteHelper dbHelper;
-  private String[] allColumns = { SQLiteHelper.COLUMN_ID,
+  private final SQLiteHelper dbHelper;
+  private final String[] allColumns = { SQLiteHelper.COLUMN_ID,
       SQLiteHelper.COLUMN_URI };
   
   private Context context;

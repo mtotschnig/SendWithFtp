@@ -44,6 +44,8 @@ import android.widget.Toast;
 
 public class UriList extends ListActivity {
   private static final int DELETE_COMMAND_ID = 1;
+  private static final String SEND_WITH_FTP = "SendWithFtp";
+  private static final String URI_HINT = "ftp://login:password@my.example.org:port/my/directory/";
   private static final int WEB_COMMAND_ID = 2;
   private static final int INFO_COMMAND_ID = 3;
   private static final int EDIT_COMMAND_ID = 4;
@@ -57,7 +59,6 @@ public class UriList extends ListActivity {
   private Cursor mUriCursor;
   private Button mAddButton;
   private EditText mUriText;
-  private String uriHint = "ftp://login:password@my.example.org:port/my/directory/";
   private String action;
   private Bundle extras;
   private String type;
@@ -100,7 +101,7 @@ public class UriList extends ListActivity {
     final SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, mUriCursor, from, to); 
     setListAdapter(adapter);
     mUriText = (EditText) findViewById(R.id.uri_new);
-    mUriText.setText(uriHint);
+    mUriText.setText(URI_HINT);
     mAddButton = (Button) findViewById(R.id.addOperation);
     mAddButton.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -137,7 +138,7 @@ public class UriList extends ListActivity {
       if (mEditedRow != 0L) {
         resetAddButton();
       } else {
-        mUriText.setText(uriHint);
+        mUriText.setText(URI_HINT);
       }
       mAddButton.setText(R.string.button_add);
     }
@@ -177,6 +178,8 @@ public class UriList extends ListActivity {
         showDialog(MARKET_DIALOG_ID);
       }
       return true;
+      default:
+        break;
     }
       
     return super.onContextItemSelected(item);   
@@ -208,6 +211,8 @@ public class UriList extends ListActivity {
       case WEB_COMMAND_ID:
         viewWebSite();
         return true;
+      default:
+        break;
       }
       return super.onOptionsItemSelected(item);
   }
@@ -264,6 +269,8 @@ public class UriList extends ListActivity {
         })
       .setNegativeButton(android.R.string.ok,null)
       .create();
+    default:
+      break;
     }
     return null;
   }
@@ -294,7 +301,7 @@ public class UriList extends ListActivity {
     }
   }
   private void resetAddButton() {
-    mUriText.setText(uriHint);
+    mUriText.setText(URI_HINT);
     mEditedRow = 0L;
     mAddButton.setText(R.string.button_add);
   }
@@ -328,7 +335,7 @@ public class UriList extends ListActivity {
       versionname = pi.versionName;
       //versiontime = ", " + R.string.installed + " " + sdf.format(new Date(pi.lastUpdateTime));
     } catch (Exception e) {
-      Log.e("SendWithFtp", "Package info not found", e);
+      Log.e(SEND_WITH_FTP, "Package info not found", e);
     }
     return versionname + version;
   }
@@ -341,7 +348,7 @@ public class UriList extends ListActivity {
       PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
       version = pi.versionCode;
     } catch (Exception e) {
-      Log.e("SendWithFtp", "Package name not found", e);
+      Log.e(SEND_WITH_FTP, "Package name not found", e);
     }
     return version;
   }
@@ -354,7 +361,7 @@ public class UriList extends ListActivity {
       PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
       version = pi.versionName;
     } catch (Exception e) {
-      Log.e("SendWithFtp", "Package name not found", e);
+      Log.e(SEND_WITH_FTP, "Package name not found", e);
     }
     return version;
   }
